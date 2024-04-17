@@ -1,14 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.controller.IngredientFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="800.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.OrderFormController">
+   <children>
+      <AnchorPane layoutY="-1.0" prefHeight="62.0" prefWidth="1192.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="166.4" layoutY="4.0" prefHeight="56.0" prefWidth="228.0" text="SUPPLIER FORM" textFill="WHITE" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="798.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="767.0" layoutY="3.0" prefHeight="56.0" prefWidth="259.0" style="-fx-background-color: #0f6789;" text="INGREDIENT FORM" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="39.0" layoutY="81.0" prefHeight="712.0" prefWidth="1139.0" stylesheets="@../css/dashboard.css">
+         <styleClass>
+            <String fx:value="radius" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
+            <AnchorPane layoutX="24.0" layoutY="10.6" opacity="0.75" prefHeight="340.0" prefWidth="1106.0" style="-fx-background-color: #e7e1e1;" stylesheets="@../css/customer.css" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="10.6">
+               <styleClass>
+                  <String fx:value="radius" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <TableView layoutX="15.2" layoutY="16.2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.leftAnchor="15.2" AnchorPane.rightAnchor="15.200000000000045" AnchorPane.topAnchor="16.2">
+                     <columns>
+                        <TableColumn prefWidth="133.59997862577438" text="Supplier name" />
+                        <TableColumn prefWidth="144.79998779296875" text="Supplier date" />
+                        <TableColumn prefWidth="281.5999450683594" text="Ingredient name" />
+                        <TableColumn prefWidth="168.7999267578125" text="Price" />
+                        <TableColumn prefWidth="140.800048828125" text="Qty" />
+                        <TableColumn prefWidth="187.99993896484375" text="Total" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="24.0" layoutY="365.0" prefHeight="340.0" prefWidth="1116.0" style="-fx-background-color: #e7e1e1;" stylesheets="@../css/customer.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
+               <children>
+                  <Text layoutX="25.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID:" wrappingWidth="137.69000244140625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtProductId" layoutX="28.0" layoutY="37.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="10.0" prefWidth="450.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="635.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier Name:" wrappingWidth="137.69000244140625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtProductIName" layoutX="634.0" layoutY="37.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="10.0" prefWidth="450.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="25.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient ID:" wrappingWidth="158.48995971679688">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtProductIPrice" layoutX="28.0" layoutY="166.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="10.0" prefWidth="450.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="635.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Name:" wrappingWidth="137.69000244140625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <JFXButton buttonType="RAISED" layoutX="948.0" layoutY="279.0" onAction="#btnDeleteOnAction" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #e74c3c; -fx-background-radius: 20;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="804.0" layoutY="279.0" onAction="#btnUpdateOnAction" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #e67e22; -fx-background-radius: 20;" text="Update" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="658.0" layoutY="279.0" onAction="#btnSaveOnAction" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #2980b9; -fx-background-radius: 20;" text="Save" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="514.0" layoutY="279.0" onAction="#btnClearOnAction" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #7f8c8d; -fx-background-radius: 20;" text="Clear" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="610.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-clear-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="760.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-save-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="909.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-update-48.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="1048.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-delete-48.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="25.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="158.48995971679688">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtProductQty" layoutX="28.0" layoutY="222.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="10.0" prefWidth="450.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="633.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty:" wrappingWidth="158.48995971679688">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtProductQty1" layoutX="634.0" layoutY="219.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="10.0" prefWidth="450.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="26.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplied date:" wrappingWidth="137.69000244140625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <DatePicker layoutX="28.0" layoutY="109.0" prefHeight="10.0" prefWidth="450.0" />
+                  <AutoCompleteTextField layoutX="637.0" layoutY="163.0" prefHeight="31.0" prefWidth="450.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="radius" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

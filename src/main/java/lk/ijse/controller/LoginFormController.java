@@ -24,7 +24,8 @@ public class LoginFormController {
         Stage stage = (Stage) this.rootNode.getScene().getWindow();
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setTitle("dashboard form");
+        stage.setTitle("Bakery Management System");
+
 
     }
 

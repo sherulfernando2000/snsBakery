@@ -1,14 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.controller.PaymentFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="800.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PaymentFormController">
+   <children>
+      <AnchorPane layoutY="-1.0" prefHeight="62.0" prefWidth="1192.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="192.8" layoutY="4.0" prefHeight="56.0" prefWidth="201.0" text="ORDER FORM" textFill="WHITE" AnchorPane.leftAnchor="193.0" AnchorPane.rightAnchor="798.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="794.0" layoutY="3.0" prefHeight="56.0" prefWidth="232.0" style="-fx-background-color: #0f6789;" text="PAYMENT FORM" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="28.0" layoutY="416.0" prefHeight="365.0" prefWidth="1106.0" styleClass="white-bg" stylesheets="@../css/customer.css">
+         <children>
+            <Label layoutX="29.0" layoutY="67.0" prefHeight="32.0" prefWidth="116.0" text="Items:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="111.0" prefHeight="32.0" prefWidth="154.0" text="Gross Amount:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="156.0" prefHeight="32.0" prefWidth="116.0" text="Discount %:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="247.0" prefHeight="32.0" prefWidth="116.0" text="Net Amount:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="202.0" prefHeight="32.0" prefWidth="116.0" text="Total saving:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="285.0" prefHeight="32.0" prefWidth="116.0" text="Card / Cash:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="326.0" prefHeight="32.0" prefWidth="116.0" text="Balance:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="487.0" layoutY="156.0" prefHeight="32.0" prefWidth="143.0" text="Discount Type:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="539.0" layoutY="279.0" prefHeight="32.0" prefWidth="143.0" text="Amount:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="23.0" prefHeight="32.0" prefWidth="116.0" text="Payment ID:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="553.0" layoutY="17.0" prefHeight="32.0" prefWidth="116.0" text="Time:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPaymentId" layoutX="152.0" layoutY="23.0" prefHeight="32.0" prefWidth="116.0" style="-fx-background-color: gray;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblItem" layoutX="151.0" layoutY="67.0" prefHeight="32.0" prefWidth="116.0" style="-fx-background-color: gray;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblGrossAmount" layoutX="152.0" layoutY="111.0" prefHeight="32.0" prefWidth="116.0" style="-fx-background-color: gray;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotalSaving" layoutX="152.0" layoutY="202.0" prefHeight="32.0" prefWidth="116.0" style="-fx-background-color: gray;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNetAmount" layoutX="151.0" layoutY="247.0" prefHeight="32.0" prefWidth="116.0" style="-fx-background-color: gray;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBalance" layoutX="152.0" layoutY="326.0" prefHeight="32.0" prefWidth="116.0" style="-fx-background-color: gray;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" layoutX="605.0" layoutY="17.0" prefHeight="32.0" prefWidth="116.0" style="-fx-background-color: gray;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cbxCardCash" layoutX="149.0" layoutY="288.0" prefHeight="26.0" prefWidth="122.0" />
+            <JFXButton buttonType="RAISED" layoutX="889.0" layoutY="304.0" onAction="#btnNextOrderOnAction" prefHeight="44.0" prefWidth="187.0" style="-fx-background-color: #0f6789;" text="Next Order" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <TextField fx:id="txtDiscountPrec" layoutX="152.0" layoutY="160.0" prefHeight="26.0" prefWidth="116.0" />
+            <JFXComboBox fx:id="cbxDisType" layoutX="608.0" layoutY="159.0" prefHeight="26.0" prefWidth="122.0" />
+            <TextField fx:id="txtAmount" layoutX="611.0" layoutY="285.0" prefHeight="26.0" prefWidth="116.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="28.0" layoutY="83.0" opacity="0.75" prefHeight="297.0" prefWidth="1106.0" style="-fx-background-color: #e7e1e1;" stylesheets="@../css/customer.css">
+         <styleClass>
+            <String fx:value="radius" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
+            <TableView fx:id="tblOrderSummary" layoutX="15.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="16.400000000000034" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.400000000000091" AnchorPane.topAnchor="14.0">
+               <columns>
+                  <TableColumn fx:id="colCode" prefWidth="155.20002287626266" text="code" />
+                  <TableColumn fx:id="colDescription" prefWidth="231.99996948242188" text="description" />
+                  <TableColumn fx:id="colUnitPrice" prefWidth="245.5999755859375" text="unit price" />
+                  <TableColumn fx:id="colQty" prefWidth="197.5999755859375" text="qty" />
+                  <TableColumn fx:id="colTotal" prefWidth="233.60003662109375" text="total" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
