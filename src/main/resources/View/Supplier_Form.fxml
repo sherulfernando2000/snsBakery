@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.OrderFormController">
+<AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.SupplierFormController">
    <children>
       <AnchorPane layoutY="-1.0" prefHeight="62.0" prefWidth="1192.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
          <children>
@@ -20,7 +20,7 @@
                   <Font size="26.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="767.0" layoutY="3.0" prefHeight="56.0" prefWidth="259.0" style="-fx-background-color: WHIT;" text="INGREDIENT FORM" textFill="WHITE">
+            <JFXButton fx:id="btnIngredient" buttonType="RAISED" layoutX="767.0" layoutY="3.0" onAction="#btnIngredientOnAction" prefHeight="56.0" prefWidth="259.0" text="INGREDIENT FORM" textFill="WHITE">
                <font>
                   <Font size="26.0" />
                </font>
@@ -56,7 +56,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtCustomerId" layoutX="23.0" layoutY="87.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtSupplierId" layoutX="23.0" layoutY="87.0" onAction="#txtSupplierIdOnAction" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -66,7 +66,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtCustomerName" layoutX="630.0" layoutY="87.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtSupplierName" layoutX="630.0" layoutY="87.0" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -76,7 +76,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtCustomerAddress" layoutX="26.0" layoutY="191.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtSupplierTel" layoutX="26.0" layoutY="191.0" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -86,7 +86,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtCustomerTel" layoutX="633.0" layoutY="191.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtSupplierAddress" layoutX="633.0" layoutY="191.0" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
