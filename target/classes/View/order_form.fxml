@@ -124,9 +124,9 @@
                      <font>
                         <Font size="18.0" />
                      </font></TextField>
-                  <Label layoutX="9.0" layoutY="13.0" prefHeight="18.0" prefWidth="293.0" text="Order detail________________________" />
-                  <Label layoutX="9.0" layoutY="79.0" prefHeight="18.0" prefWidth="293.0" text="Customer detail________________________" />
-                  <Label layoutX="9.0" layoutY="151.0" prefHeight="18.0" prefWidth="293.0" text="Product detail________________________" />
+                  <Label layoutX="9.0" layoutY="13.0" prefHeight="18.0" prefWidth="293.0" text="Order detail_____________________________________________" />
+                  <Label layoutX="9.0" layoutY="79.0" prefHeight="18.0" prefWidth="293.0" text="Customer detail_________________________________________" />
+                  <Label layoutX="9.0" layoutY="151.0" prefHeight="18.0" prefWidth="293.0" text="Product detail___________________________________________" />
                   <JFXButton buttonType="RAISED" layoutX="947.0" layoutY="240.0" onAction="#btnRemoveOnAction" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #7f8c8d; -fx-background-radius: 20;" text="Remove" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="17.0" />

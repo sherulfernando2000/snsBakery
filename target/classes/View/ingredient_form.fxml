@@ -79,7 +79,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtProductIPrice" layoutX="28.0" layoutY="166.0" prefHeight="10.0" prefWidth="450.0">
+                  <TextField fx:id="txtProductIPrice" layoutX="28.0" layoutY="166.0" prefHeight="38.0" prefWidth="450.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -129,22 +129,22 @@
                         <Image url="@../icon/icons8-delete-48.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="25.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="158.48995971679688">
+                  <Text layoutX="25.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="158.48995971679688">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtProductQty" layoutX="28.0" layoutY="222.0" prefHeight="10.0" prefWidth="450.0">
+                  <TextField fx:id="txtProductQty" layoutX="28.0" layoutY="227.0" prefHeight="10.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <Text layoutX="633.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty:" wrappingWidth="158.48995971679688">
+                  <Text layoutX="633.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty:" wrappingWidth="158.48995971679688">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtProductQty1" layoutX="634.0" layoutY="219.0" prefHeight="10.0" prefWidth="450.0">
+                  <TextField fx:id="txtProductQty1" layoutX="634.0" layoutY="224.0" prefHeight="10.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -154,8 +154,8 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <DatePicker layoutX="28.0" layoutY="109.0" prefHeight="10.0" prefWidth="450.0" />
-                  <TextField fx:id="txtIngredientName" layoutX="634.0" layoutY="166.0" prefHeight="10.0" prefWidth="450.0">
+                  <DatePicker layoutX="28.0" layoutY="102.0" prefHeight="38.0" prefWidth="450.0" />
+                  <TextField fx:id="txtIngredientName" layoutX="634.0" layoutY="166.0" prefHeight="38.0" prefWidth="450.0">
                      <font>
                         <Font size="15.0" />
                      </font>

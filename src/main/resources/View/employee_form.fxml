@@ -27,14 +27,14 @@
                   <String fx:value="white-bg" />
                </styleClass>
                <children>
-                  <TableView layoutX="15.2" layoutY="16.2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.leftAnchor="15.2" AnchorPane.rightAnchor="15.200000000000045" AnchorPane.topAnchor="16.2">
+                  <TableView fx:id="tblEmployee" layoutX="15.2" layoutY="16.2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.leftAnchor="15.2" AnchorPane.rightAnchor="15.200000000000045" AnchorPane.topAnchor="16.2">
                      <columns>
-                        <TableColumn prefWidth="114.39999693632126" text="Employee ID" />
-                        <TableColumn prefWidth="233.59999084472656" text="Employee Name" />
-                        <TableColumn prefWidth="207.2000732421875" text="Phone Number" />
-                        <TableColumn prefWidth="196.800048828125" text="Address" />
-                        <TableColumn prefWidth="172.7999267578125" text="Position" />
-                        <TableColumn prefWidth="162.39998779296866" text="Salary" />
+                        <TableColumn fx:id="colId" prefWidth="114.39999693632126" text="Employee ID" />
+                        <TableColumn fx:id="colName" prefWidth="233.59999084472656" text="Employee Name" />
+                        <TableColumn fx:id="colPhoneno" prefWidth="207.2000732421875" text="Phone Number" />
+                        <TableColumn fx:id="colAddress" prefWidth="196.800048828125" text="Address" />
+                        <TableColumn fx:id="colPosition" prefWidth="172.7999267578125" text="Position" />
+                        <TableColumn fx:id="colSalary" prefWidth="162.39998779296866" text="Salary" />
                      </columns>
                   </TableView>
                </children>
@@ -46,7 +46,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeId" layoutX="28.0" layoutY="49.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeId" layoutX="28.0" layoutY="49.0" onAction="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -56,7 +56,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeName" layoutX="635.0" layoutY="49.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeName" layoutX="635.0" layoutY="49.0" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -66,7 +66,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeAddress" layoutX="28.0" layoutY="136.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeAddress" layoutX="28.0" layoutY="136.0" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -76,7 +76,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeTel" layoutX="635.0" layoutY="136.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeTel" layoutX="635.0" layoutY="136.0" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -126,7 +126,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeePosition" layoutX="28.0" layoutY="228.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeePosition" layoutX="28.0" layoutY="228.0" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -136,7 +136,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeSalary" layoutX="635.0" layoutY="228.0" onMouseClicked="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeSalary" layoutX="635.0" layoutY="228.0" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
