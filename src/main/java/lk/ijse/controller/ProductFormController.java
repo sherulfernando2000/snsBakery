@@ -118,6 +118,7 @@ public class ProductFormController {
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION,"product deleted successfully.").show();
                 clearFields();
+                loadAllProducts();
 
             }
 
@@ -143,6 +144,7 @@ public class ProductFormController {
             if (isSaved ) {
                 new Alert(Alert.AlertType.CONFIRMATION,"product saved successfully.").show();
                 clearFields();
+                loadAllProducts();
 
             }
         } catch (SQLException e) {
@@ -177,6 +179,7 @@ public class ProductFormController {
             if (isUpdated ) {
                 new Alert(Alert.AlertType.CONFIRMATION,"product updated successfully.").show();
                 clearFields();
+                loadAllProducts();
             }
 
         } catch (SQLException e) {

@@ -131,6 +131,7 @@ public class EmployeeFormController {
             boolean isDeleted = EmployeeRepo.delete(id);
             new Alert(Alert.AlertType.CONFIRMATION,"Employee Deleted.").show();
             clearFields();
+            loadAllEmployees();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -152,6 +153,7 @@ public class EmployeeFormController {
             if (isSaved ) {
                 new Alert(Alert.AlertType.CONFIRMATION,"Employee saved").show();
                 clearFields();
+                loadAllEmployees();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -183,6 +185,7 @@ public class EmployeeFormController {
             if (isUpdated ) {
                 new Alert(Alert.AlertType.CONFIRMATION,"Employee updated Successfully.").show();
                 clearFields();
+                loadAllEmployees();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

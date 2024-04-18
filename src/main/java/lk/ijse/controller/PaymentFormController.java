@@ -61,6 +61,12 @@ public class PaymentFormController {
     @FXML
     private TextField txtDiscountPrec;
 
+    public int grossTotal;
+
+    public void initialize(){
+        grossTotal = OrderFormController.grossTotal;
+        lblGrossAmount.setText(String.valueOf(grossTotal));
+    }
     @FXML
     void btnNextOrderOnAction(ActionEvent event) {
 

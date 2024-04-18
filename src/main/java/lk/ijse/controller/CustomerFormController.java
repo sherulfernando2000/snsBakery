@@ -102,6 +102,8 @@ public class CustomerFormController {
         try {
             boolean isDeleted = CustomerRepo.delete(id);
             new Alert(Alert.AlertType.CONFIRMATION,"Customer Deleted.").show();
+            clearFields();
+            loadAllCustomers();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -121,6 +123,7 @@ public class CustomerFormController {
             if (isSaved ) {
                 new Alert(Alert.AlertType.CONFIRMATION,"customer saved").show();
                 clearFields();
+                loadAllCustomers();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -149,6 +152,7 @@ public class CustomerFormController {
             if (isUpdated ) {
                 new Alert(Alert.AlertType.CONFIRMATION,"customer updated").show();
                 clearFields();
+                loadAllCustomers();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

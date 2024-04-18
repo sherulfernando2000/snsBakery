@@ -47,7 +47,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblOrderId" layoutX="92.0" layoutY="45.0" prefHeight="22.0" prefWidth="182.0" style="-fx-background-color: white;">
+                  <Label fx:id="lblOrderId" layoutX="92.0" layoutY="42.0" prefHeight="22.0" prefWidth="182.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -56,7 +56,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblOrderDate" layoutX="497.0" layoutY="45.0" prefHeight="22.0" prefWidth="150.0" style="-fx-background-color: white;">
+                  <Label fx:id="lblOrderDate" layoutX="497.0" layoutY="42.0" prefHeight="22.0" prefWidth="150.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -65,7 +65,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblOrderTime" layoutX="867.0" layoutY="45.0" prefHeight="22.0" prefWidth="138.0" style="-fx-background-color: white;">
+                  <Label fx:id="lblOrderTime" layoutX="870.0" layoutY="42.0" prefHeight="22.0" prefWidth="138.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -79,7 +79,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblCustomerId" layoutX="527.0" layoutY="111.0" prefHeight="22.0" prefWidth="201.0" style="-fx-background-color: white;">
+                  <Label fx:id="lblCustomerId" layoutX="527.0" layoutY="108.0" prefHeight="22.0" prefWidth="201.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -88,7 +88,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblCode" layoutX="80.0" layoutY="187.0" prefHeight="22.0" prefWidth="170.0" style="-fx-background-color: white;">
+                  <Label fx:id="lblCode" layoutX="74.0" layoutY="182.0" prefHeight="22.0" prefWidth="170.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -102,7 +102,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblUnitPrice" layoutX="863.0" layoutY="187.0" prefHeight="21.0" prefWidth="83.0" style="-fx-background-color: white;">
+                  <Label fx:id="lblUnitPrice" layoutX="863.0" layoutY="182.0" prefHeight="21.0" prefWidth="83.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -111,7 +111,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblQtyOnHand" layoutX="141.0" layoutY="229.0" prefHeight="21.0" prefWidth="83.0" style="-fx-background-color: white;">
+                  <Label fx:id="lblQtyOnHand" layoutX="141.0" layoutY="225.0" prefHeight="21.0" prefWidth="83.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
@@ -120,13 +120,13 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtQty" layoutX="439.0" layoutY="227.0" prefHeight="26.0" prefWidth="114.0">
+                  <TextField fx:id="txtQty" layoutX="435.0" layoutY="219.0" prefHeight="27.0" prefWidth="74.0">
                      <font>
                         <Font size="18.0" />
                      </font></TextField>
-                  <Label layoutX="9.0" layoutY="13.0" prefHeight="18.0" prefWidth="293.0" text="Order detail_____________________________________________" />
-                  <Label layoutX="9.0" layoutY="79.0" prefHeight="18.0" prefWidth="293.0" text="Customer detail_________________________________________" />
-                  <Label layoutX="9.0" layoutY="151.0" prefHeight="18.0" prefWidth="293.0" text="Product detail___________________________________________" />
+                  <Label layoutX="9.0" layoutY="13.0" prefHeight="18.0" prefWidth="1122.0" text="Order detail__________________________________________________________________________________________________________________________________________________________________________________________________________________" />
+                  <Label layoutX="9.0" layoutY="79.0" prefHeight="18.0" prefWidth="1122.0" text="Customer detail_______________________________________________________________________________________________________________________________________________________________________________________________________________" />
+                  <Label layoutX="9.0" layoutY="151.0" prefHeight="18.0" prefWidth="1122.0" text="Product detail_________________________________________________________________________________________________________________________________________________________________________________________________________________" />
                   <JFXButton buttonType="RAISED" layoutX="947.0" layoutY="240.0" onAction="#btnRemoveOnAction" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #7f8c8d; -fx-background-radius: 20;" text="Remove" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="17.0" />
@@ -150,7 +150,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblCustomerName" layoutX="926.0" layoutY="109.0" prefHeight="22.0" prefWidth="201.0" style="-fx-background-color: white;">
+                  <Label fx:id="lblCustomerName" layoutX="926.0" layoutY="106.0" prefHeight="22.0" prefWidth="201.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -188,7 +188,10 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lblGrossTotal" layoutX="141.0" layoutY="676.0" prefHeight="21.0" prefWidth="83.0" style="-fx-background-color: white;" />
+            <Label fx:id="lblGrossTotal" layoutX="141.0" layoutY="676.0" prefHeight="21.0" prefWidth="83.0" style="-fx-background-color: white;">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
             <JFXButton buttonType="RAISED" layoutX="965.0" layoutY="666.0" onAction="#btnConfirmOrderOnAction" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #2980b9; -fx-background-radius: 20;" text="Confirm order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />

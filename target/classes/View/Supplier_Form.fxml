@@ -39,12 +39,12 @@
                   <String fx:value="white-bg" />
                </styleClass>
                <children>
-                  <TableView layoutX="15.2" layoutY="16.2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.leftAnchor="15.2" AnchorPane.rightAnchor="15.200000000000045" AnchorPane.topAnchor="16.2">
+                  <TableView fx:id="tblSupplier" layoutX="15.2" layoutY="16.2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.leftAnchor="15.2" AnchorPane.rightAnchor="15.200000000000045" AnchorPane.topAnchor="16.2">
                      <columns>
-                        <TableColumn prefWidth="270.0" text="Supplier ID" />
-                        <TableColumn prefWidth="186.40005493164062" text="Supplier Name" />
-                        <TableColumn prefWidth="354.39996337890625" text="Phone Number" />
-                        <TableColumn prefWidth="270.0" text="Address" />
+                        <TableColumn fx:id="colSupplierId" prefWidth="270.0" text="Supplier ID" />
+                        <TableColumn fx:id="colSupplierName" prefWidth="186.40005493164062" text="Supplier Name" />
+                        <TableColumn fx:id="colPhoneNo" prefWidth="354.39996337890625" text="Phone Number" />
+                        <TableColumn fx:id="colAddress" prefWidth="270.0" text="Address" />
                      </columns>
                   </TableView>
                </children>

@@ -61,8 +61,15 @@ public class DashBoardFormController {
     }
 
     @FXML
-    void btnLogoutOnAction(ActionEvent event) {
+    void btnLogoutOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_form.fxml"));
 
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) this.mainNode.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Bakery Management System");
     }
 
     @FXML

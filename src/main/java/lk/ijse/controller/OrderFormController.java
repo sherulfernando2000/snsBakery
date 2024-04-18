@@ -89,6 +89,8 @@ public class OrderFormController {
 
     private ObservableList<CartTm> obList = FXCollections.observableArrayList();
 
+    public static int grossTotal = 0;
+
 
 
 
@@ -173,7 +175,7 @@ public class OrderFormController {
     }
 
     private void calculateGrossTotal() {
-        int grossTotal = 0;
+        //int grossTotal = 0;
         for (int i = 0; i < tblOrder.getItems().size(); i++) {
             grossTotal += (double) colTotal.getCellData(i);
         }
@@ -187,7 +189,10 @@ public class OrderFormController {
     }
 
     @FXML
-    void btnConfirmOrderOnAction(ActionEvent event) {
+    void btnConfirmOrderOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/payment_form.fxml"));
+        this.rootNode.getChildren().removeAll();
+        this.rootNode.getChildren().setAll(rootNode);
 
 
     }
