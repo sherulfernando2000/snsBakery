@@ -74,7 +74,15 @@ public class DashBoardFormController {
 
     @FXML
     void btnOrderOnAction(ActionEvent event) throws IOException {
-        navigateTo("/View/order_form.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/order_form.fxml"));
+        AnchorPane rootNode = loader.load();
+
+        // Set the controller for the loaded FXML file
+        OrderFormController controller = loader.getController();
+        controller.initializeOrder(); // Call your custom initialization method
+
+        this.rootNode.getChildren().removeAll();
+        this.rootNode.getChildren().setAll(rootNode);
 
     }
 

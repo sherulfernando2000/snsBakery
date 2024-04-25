@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PaymentFormController">
+<AnchorPane fx:id="rootNodeP" prefHeight="800.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.OrderFormController">
    <children>
       <AnchorPane layoutY="-1.0" prefHeight="62.0" prefWidth="1192.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
          <children>
@@ -119,14 +119,14 @@
                </font>
             </Label>
             <JFXComboBox fx:id="cbxCardCash" layoutX="149.0" layoutY="288.0" prefHeight="26.0" prefWidth="122.0" />
-            <JFXButton buttonType="RAISED" layoutX="889.0" layoutY="304.0" onAction="#btnNextOrderOnAction" prefHeight="44.0" prefWidth="187.0" style="-fx-background-color: #0f6789;" text="Next Order" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="889.0" layoutY="304.0" onAction="#btnPlaceOrderOnAction" prefHeight="44.0" prefWidth="187.0" style="-fx-background-color: #0f6789;" text="Place Order" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXButton>
-            <TextField fx:id="txtDiscountPrec" layoutX="152.0" layoutY="160.0" prefHeight="26.0" prefWidth="116.0" />
+            <TextField fx:id="txtDiscountPrec" layoutX="152.0" layoutY="160.0" onAction="#txtDiscountPrecOnAction" prefHeight="26.0" prefWidth="116.0" />
             <JFXComboBox fx:id="cbxDisType" layoutX="608.0" layoutY="159.0" prefHeight="26.0" prefWidth="122.0" />
-            <TextField fx:id="txtAmount" layoutX="611.0" layoutY="285.0" prefHeight="26.0" prefWidth="116.0" />
+            <TextField fx:id="txtAmount" layoutX="611.0" layoutY="285.0" onAction="#txtAmountOnAction" prefHeight="26.0" prefWidth="116.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="28.0" layoutY="83.0" opacity="0.75" prefHeight="297.0" prefWidth="1106.0" style="-fx-background-color: #e7e1e1;" stylesheets="@../css/customer.css">
@@ -137,11 +137,11 @@
          <children>
             <TableView fx:id="tblOrderSummary" layoutX="15.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="16.400000000000034" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.400000000000091" AnchorPane.topAnchor="14.0">
                <columns>
-                  <TableColumn fx:id="colCode" prefWidth="155.20002287626266" text="code" />
-                  <TableColumn fx:id="colDescription" prefWidth="231.99996948242188" text="description" />
-                  <TableColumn fx:id="colUnitPrice" prefWidth="245.5999755859375" text="unit price" />
-                  <TableColumn fx:id="colQty" prefWidth="197.5999755859375" text="qty" />
-                  <TableColumn fx:id="colTotal" prefWidth="233.60003662109375" text="total" />
+                  <TableColumn fx:id="colPCode" prefWidth="155.20002287626266" text="code" />
+                  <TableColumn fx:id="colPDescription" prefWidth="231.99996948242188" text="description" />
+                  <TableColumn fx:id="colPUnitPrice" prefWidth="245.5999755859375" text="unit price" />
+                  <TableColumn fx:id="colPQty" prefWidth="197.5999755859375" text="qty" />
+                  <TableColumn fx:id="colPTotal" prefWidth="233.60003662109375" text="total" />
                </columns>
             </TableView>
          </children>

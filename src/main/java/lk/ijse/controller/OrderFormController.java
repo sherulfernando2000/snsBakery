@@ -7,20 +7,26 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lk.ijse.model.Customer;
-import lk.ijse.model.Product;
+import lk.ijse.model.*;
 import lk.ijse.model.Tm.CartTm;
-import lk.ijse.repository.CustomerRepo;
-import lk.ijse.repository.OrderRepo;
+import lk.ijse.repository.*;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.repository.ProductRepo;
+
+
+import com.jfoenix.controls.JFXComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 
 public class OrderFormController {
@@ -55,7 +61,7 @@ public class OrderFormController {
     private Label lblCustomerTel;
 
     @FXML
-    private Label lblGrossTotal;
+    public Label lblGrossTotal;
 
     @FXML
     private Label lblOrderDate;
@@ -87,19 +93,101 @@ public class OrderFormController {
     @FXML
     private TextField txtQty;
 
-    private ObservableList<CartTm> obList = FXCollections.observableArrayList();
+    private static ObservableList<CartTm> obList = FXCollections.observableArrayList();
 
-    public static int grossTotal = 0;
+    public static int grossTotal=0;
+    public double totalSaving = 0;
+
+    double netAmount;
+
+    double balance;
+
+    public static int totalQty=0;
+
+    public static  Order order;
+
+    public  static List<OrderProductDetail> odList;
 
 
 
 
     public void initialize(){
+
+    }
+
+    void initializePayment() {
+        getNextPaymentId();
+        lblGrossAmount.setText(String.valueOf(grossTotal));
+        setTime();
+        lblItem.setText(String.valueOf(totalQty));
+        getDiscountType();
+        getCashOrCard();
+
+    }
+
+    private void getCashOrCard() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        obList.add("Cash");
+        obList.add("Card");
+        cbxCardCash.setItems(obList);
+    }
+
+    private void getDiscountType() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        obList.add("seasonal Offer");
+        obList.add("loyal customer");
+        obList.add("Other");
+        cbxDisType.setItems(obList);
+    }
+
+    private void getTotalItemQty() {
+        if (totalQty != 0) {
+            totalQty = 0;
+            for (CartTm cartItem : obList) {
+                totalQty += cartItem.getQty();
+        }
+        }else{
+            for (CartTm cartItem : obList) {
+                totalQty += cartItem.getQty();
+            }
+        }
+
+
+    }
+
+    private void setTime() {
+        LocalTime now1 = LocalTime.of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+        lblTime.setText(String.valueOf(now1));
+    }
+
+    private void getNextPaymentId() {
+        try {
+            String currentPaymentId = PaymentRepo.getCurrentPaymentId();
+            String nextpaymentId = generateNextpaymentId(currentPaymentId);
+            lblPaymentId.setText(nextpaymentId);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String generateNextpaymentId(String currentPaymentId) {
+        if(currentPaymentId != null) {
+            String[] split = currentPaymentId.split("P-");  //" ", "2"
+            int idNum = Integer.parseInt(split[1]);
+            return "P-" + ++idNum;
+        }
+        return "P-1";
+    }
+
+    public void initializeOrder() {
         setDateTime();
         getCurrentOrderId();
         getProductDescription();
         setCellValueFactory();
     }
+
+
 
     private void setCellValueFactory() {
         colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -149,7 +237,7 @@ public class OrderFormController {
 
     private void setDateTime() {
         LocalDate now = LocalDate.now();
-        lblOrderDate.setText(String.valueOf(now));
+         lblOrderDate.setText(String.valueOf(now));
         LocalTime now1 = LocalTime.of(LocalTime.now().getHour(), LocalTime.now().getMinute());
         lblOrderTime.setText(String.valueOf(now1));
 
@@ -165,9 +253,9 @@ public class OrderFormController {
 
         CartTm tm = new CartTm(code, description, qty, unitPrice, total);
         obList.add(tm);
-
         tblOrder.setItems(obList);
         calculateGrossTotal();
+        getTotalItemQty();
         txtQty.setText("");
 
 
@@ -175,10 +263,18 @@ public class OrderFormController {
     }
 
     private void calculateGrossTotal() {
-        //int grossTotal = 0;
-        for (int i = 0; i < tblOrder.getItems().size(); i++) {
-            grossTotal += (double) colTotal.getCellData(i);
+        if (grossTotal != 0) {
+            grossTotal = 0;
+            for (int i = 0; i < tblOrder.getItems().size(); i++) {
+                grossTotal += (double) colTotal.getCellData(i);
+            }
+        }else {
+            for (int i = 0; i < tblOrder.getItems().size(); i++) {
+                grossTotal += (double) colTotal.getCellData(i);
+            }
         }
+
+
         lblGrossTotal.setText(String.valueOf(grossTotal));
     }
 
@@ -190,9 +286,48 @@ public class OrderFormController {
 
     @FXML
     void btnConfirmOrderOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/payment_form.fxml"));
+        makeOrderTransactionObjects();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/payment_form.fxml"));
+        AnchorPane rootNode = loader.load();
+
+        // Set the controller for the loaded FXML file
+        OrderFormController controller = loader.getController();
+        controller.initializePayment(); // Call your custom initialization method
+
         this.rootNode.getChildren().removeAll();
         this.rootNode.getChildren().setAll(rootNode);
+
+        System.out.println(order);
+        System.out.println(odList);
+
+
+
+    }
+
+    private void makeOrderTransactionObjects() {
+        String orderId = lblOrderId.getText();
+        String status = lblOrderTime.getText();
+        Date date = Date.valueOf(lblOrderDate.getText());
+        double grossAmount = Double.parseDouble(lblGrossTotal.getText());
+        String customerId = lblCustomerId.getText();
+
+        order = new Order(orderId,status,date,grossAmount,customerId);
+
+        odList = new ArrayList<>();
+
+        for (int i = 0; i < tblOrder.getItems().size(); i++) {
+            CartTm tm = obList.get(i);
+
+            OrderProductDetail od = new OrderProductDetail(
+                    orderId,
+                    tm.getCode(),
+                    tm.getUnitPrice(),
+                    tm.getQty(),
+                    tm.getTotal()
+            );
+
+            odList.add(od);
+        }
 
 
     }
@@ -200,6 +335,7 @@ public class OrderFormController {
     @FXML
     void btnNewCustomerOnAction(ActionEvent event) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/customer_from.fxml"));
+
         this.rootNode.getChildren().removeAll();
         this.rootNode.getChildren().setAll(rootNode);
     }
@@ -249,4 +385,155 @@ public class OrderFormController {
             throw new RuntimeException(e);
         }
     }
+
+    //payment controller
+
+    @FXML
+    private JFXComboBox<String> cbxCardCash;
+
+    @FXML
+    private JFXComboBox<String> cbxDisType;
+
+    @FXML
+    private TableColumn<?, ?> colPCode;
+
+    @FXML
+    private TableColumn<?, ?> colPDescription;
+
+    @FXML
+    private TableColumn<?, ?> colPQty;
+
+    @FXML
+    private TableColumn<?, ?> colPTotal;
+
+    @FXML
+    private TableColumn<?, ?> colPUnitPrice;
+
+    @FXML
+    private Label lblBalance;
+
+    @FXML
+    private Label lblGrossAmount;
+
+    @FXML
+    private Label lblItem;
+
+    @FXML
+    private Label lblNetAmount;
+
+    @FXML
+    private Label lblPaymentId;
+
+    @FXML
+    private Label lblTime;
+
+    @FXML
+    private Label lblTotalSaving;
+
+    @FXML
+    private TableView<?> tblOrderSummary;
+
+    @FXML
+    private TextField txtAmount;
+
+    @FXML
+    private TextField txtDiscountPrec;
+
+    @FXML
+    private AnchorPane rootNodeP;
+
+
+
+    /*public void initialize(){
+
+
+    }*/
+
+    private void calculateTotalSaving(){
+        totalSaving = Double.parseDouble(lblGrossAmount.getText()) * (Double.parseDouble(txtDiscountPrec.getText())/100);
+        lblTotalSaving.setText(String.valueOf(totalSaving));
+    }
+
+    private void calculateNetAmount(){
+        netAmount = Double.parseDouble(lblGrossAmount.getText()) - totalSaving;
+        lblNetAmount.setText(String.valueOf(netAmount));
+    }
+
+    @FXML
+    void txtDiscountPrecOnAction(ActionEvent event) {
+        calculateTotalSaving();
+        calculateNetAmount();
+
+    }
+
+    @FXML
+    void txtAmountOnAction(ActionEvent event) {
+            calculateBalance();
+    }
+
+    private void calculateBalance() {
+        balance = Double.parseDouble(txtAmount.getText()) - netAmount ;
+        lblBalance.setText(String.valueOf(balance));
+    }
+
+    @FXML
+    void btnPlaceOrderOnAction(ActionEvent event) throws IOException {
+        String paymentId = lblPaymentId.getText();
+        String paymentMethod = cbxCardCash.getValue();
+        LocalDate now = LocalDate.now();
+        String date = String.valueOf(now);
+        double discountAmount = Double.parseDouble(lblTotalSaving.getText());
+        double totalAmount = Double.parseDouble(lblNetAmount.getText());
+        String orderId = order.getOrderId();
+        String discountType = cbxDisType.getValue();
+        double discountPrecentage = Double.parseDouble(txtDiscountPrec.getText());
+
+        Payment payment = new Payment(paymentId, paymentMethod, date, discountAmount, totalAmount, orderId,discountType, discountPrecentage);
+
+       PlaceOrder po = new PlaceOrder(order,odList,payment);
+
+        try {
+            boolean isPlaced =  PlaceOrderRepo.placeOrder(po);
+            if(isPlaced) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
+            }
+
+        } catch (SQLException e) {
+            // Print the exception message
+            System.out.println("Exception occurred: " + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/order_form.fxml"));
+        AnchorPane rootNode = loader.load();
+
+        obList.clear();
+
+        // Set the controller for the loaded FXML file
+        OrderFormController controller = loader.getController();
+        controller.initializeOrder(); // Call your custom initialization method
+
+        this.rootNodeP.getChildren().removeAll();
+        this.rootNodeP.getChildren().setAll(rootNode);
+
+        //obList.removeAll();
+
+
+
+       /* PlaceOrder po = new PlaceOrder(order, odList);
+        try {
+            boolean isPlaced = PlaceOrderRepo.placeOrder(po);
+            if(isPlaced) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }*/
+    }
+
+
 }

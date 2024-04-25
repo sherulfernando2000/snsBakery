@@ -64,7 +64,7 @@ public class PaymentFormController {
     public int grossTotal;
 
     public void initialize(){
-        grossTotal = OrderFormController.grossTotal;
+
         lblGrossAmount.setText(String.valueOf(grossTotal));
     }
     @FXML

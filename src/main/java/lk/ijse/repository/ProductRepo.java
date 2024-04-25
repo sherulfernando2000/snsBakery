@@ -1,6 +1,7 @@
 package lk.ijse.repository;
 
 import lk.ijse.db.DbConnection;
+import lk.ijse.model.OrderProductDetail;
 import lk.ijse.model.Product;
 
 import java.sql.Connection;
@@ -129,5 +130,27 @@ public class ProductRepo {
         }
 
         return null;
+    }
+
+    public static boolean update(List<OrderProductDetail> odList) throws SQLException {
+        for (OrderProductDetail od : odList) {
+            boolean isUpdateQty = updateQty(od.getProductId(), od.getQty());
+            if(!isUpdateQty) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean updateQty(String productId, int qty) throws SQLException {
+        String sql = "UPDATE product SET qtyInSale = qtyInSale - ? WHERE productId = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setInt(1, qty);
+        pstm.setString(2, productId);
+
+        return pstm.executeUpdate() > 0;
     }
 }
