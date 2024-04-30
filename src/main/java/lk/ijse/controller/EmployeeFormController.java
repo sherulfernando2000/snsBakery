@@ -214,5 +214,12 @@ public class EmployeeFormController {
         }
     }
 
+    @FXML
+    void btnTaskFormOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/View/ProductEmployee_form.fxml"));
+        this.rootNode.getChildren().removeAll();
+        this.rootNode.getChildren().setAll(rootNode);
+    }
+
 
 }

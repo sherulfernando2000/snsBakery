@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -14,14 +13,19 @@
 
 <AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.IngredientFormController">
    <children>
-      <AnchorPane layoutY="-1.0" prefHeight="62.0" prefWidth="1192.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+      <AnchorPane prefHeight="62.0" prefWidth="1192.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
          <children>
-            <JFXButton fx:id="btnSupplier" buttonType="RAISED" layoutX="166.4" layoutY="4.0" onAction="#btnSupplierOnAction" prefHeight="56.0" prefWidth="228.0" text="SUPPLIER FORM" textFill="WHITE" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="798.0">
+            <JFXButton fx:id="btnSupplier" buttonType="RAISED" layoutX="123.8" layoutY="4.0" onAction="#btnSupplierOnAction" prefHeight="56.0" prefWidth="228.0" text="SUPPLIER FORM" textFill="WHITE" AnchorPane.leftAnchor="123.8" AnchorPane.rightAnchor="841.0">
                <font>
                   <Font size="26.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="767.0" layoutY="3.0" prefHeight="56.0" prefWidth="259.0" style="-fx-background-color: #0f6789;" text="INGREDIENT FORM" textFill="WHITE">
+            <JFXButton fx:id="btnSupplierOrder" buttonType="RAISED" layoutX="879.0" layoutY="4.0" onAction="#btnSupplierOrderOnAction" prefHeight="56.0" prefWidth="259.0" text="SUPPLIER ORDER" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnIngredient" buttonType="RAISED" layoutX="464.0" layoutY="3.0" onAction="#btnIngredientOnAction" prefHeight="56.0" prefWidth="259.0" style="-fx-background-color: #0f6789;" text="INGREDIENT FORM" textFill="WHITE">
                <font>
                   <Font size="26.0" />
                </font>
@@ -40,51 +44,28 @@
                   <String fx:value="white-bg" />
                </styleClass>
                <children>
-                  <TableView layoutX="15.2" layoutY="16.2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.leftAnchor="15.2" AnchorPane.rightAnchor="15.200000000000045" AnchorPane.topAnchor="16.2">
+                  <TableView fx:id="tblIngredient" layoutX="15.2" layoutY="16.2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.leftAnchor="15.2" AnchorPane.rightAnchor="15.200000000000045" AnchorPane.topAnchor="16.2">
                      <columns>
-                        <TableColumn prefWidth="133.59997862577438" text="Supplier name" />
-                        <TableColumn prefWidth="144.79998779296875" text="Supplier date" />
-                        <TableColumn prefWidth="281.5999450683594" text="Ingredient name" />
-                        <TableColumn prefWidth="168.7999267578125" text="Price" />
-                        <TableColumn prefWidth="140.800048828125" text="Qty" />
-                        <TableColumn prefWidth="187.99993896484375" text="Total" />
+                        <TableColumn fx:id="colId" prefWidth="282.4000274538994" text="Ingredient ID" />
+                        <TableColumn fx:id="colName" prefWidth="408.0" text="Ingredient name" />
+                        <TableColumn fx:id="colCategory" prefWidth="369.5999755859375" text="Category" />
                      </columns>
                   </TableView>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="24.0" layoutY="365.0" prefHeight="340.0" prefWidth="1116.0" style="-fx-background-color: #e7e1e1;" stylesheets="@../css/customer.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
                <children>
-                  <Text layoutX="25.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID:" wrappingWidth="137.69000244140625">
+                  <Text layoutX="25.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient ID:" wrappingWidth="158.48995971679688">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtProductId" layoutX="28.0" layoutY="37.0" prefHeight="10.0" prefWidth="450.0">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <Text layoutX="635.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier Name:" wrappingWidth="137.69000244140625">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="txtProductIName" layoutX="634.0" layoutY="37.0" prefHeight="10.0" prefWidth="450.0">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <Text layoutX="25.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient ID:" wrappingWidth="158.48995971679688">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="txtProductIPrice" layoutX="28.0" layoutY="166.0" prefHeight="38.0" prefWidth="450.0">
+                  <TextField fx:id="txtIngredientId" layoutX="25.0" layoutY="66.0" onAction="#txtIdSearchOnAction" prefHeight="38.0" prefWidth="450.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <Text layoutX="635.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Name:" wrappingWidth="137.69000244140625">
+                  <Text layoutX="633.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Name:" wrappingWidth="137.69000244140625">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -129,33 +110,17 @@
                         <Image url="@../icon/icons8-delete-48.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="25.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="158.48995971679688">
+                  <Text layoutX="28.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" wrappingWidth="158.48995971679688">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtProductQty" layoutX="28.0" layoutY="227.0" prefHeight="10.0" prefWidth="450.0">
+                  <TextField fx:id="txtIngredientCategory" layoutX="25.0" layoutY="139.0" prefHeight="10.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <Text layoutX="633.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty:" wrappingWidth="158.48995971679688">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="txtProductQty1" layoutX="634.0" layoutY="224.0" prefHeight="10.0" prefWidth="450.0">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <Text layoutX="26.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplied date:" wrappingWidth="137.69000244140625">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-                  <DatePicker layoutX="28.0" layoutY="102.0" prefHeight="38.0" prefWidth="450.0" />
-                  <TextField fx:id="txtIngredientName" layoutX="634.0" layoutY="166.0" prefHeight="38.0" prefWidth="450.0">
+                  <TextField fx:id="txtIngredientName" layoutX="634.0" layoutY="66.0" prefHeight="38.0" prefWidth="450.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -163,6 +128,7 @@
                </children>
                <styleClass>
                   <String fx:value="radius" />
+                  <String fx:value="bodybg-customer" />
                   <String fx:value="white-bg" />
                </styleClass>
             </AnchorPane>

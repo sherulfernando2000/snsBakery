@@ -34,4 +34,18 @@ public class OrderRepo {
 
         return pstm.executeUpdate() > 0;
     }
+
+    public static int getOderCount() throws SQLException {
+        String sql = "SELECT orderId FROM orders ";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        int count = 0;
+        while (resultSet.next()) {
+            count++;
+
+        }
+        return count;
+    }
 }

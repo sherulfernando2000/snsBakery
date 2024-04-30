@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ProductEmployeeFormController">
+   <children>
+      <AnchorPane layoutY="-1.0" prefHeight="62.0" prefWidth="1192.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+         <children>
+            <JFXButton fx:id="btnIngredient" buttonType="RAISED" layoutX="482.0" layoutY="3.0" onAction="#btnIngredientOnAction" prefHeight="56.0" prefWidth="259.0" text="TASK FORM" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="39.0" layoutY="81.0" prefHeight="712.0" prefWidth="1139.0" stylesheets="@../css/dashboard.css">
+         <styleClass>
+            <String fx:value="radius" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
+            <AnchorPane layoutX="24.0" layoutY="10.6" opacity="0.75" prefHeight="340.0" prefWidth="1106.0" style="-fx-background-color: #e7e1e1;" stylesheets="@../css/customer.css" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="10.6">
+               <styleClass>
+                  <String fx:value="radius" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <TableView fx:id="tblTask" layoutX="15.2" layoutY="16.2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.leftAnchor="15.2" AnchorPane.rightAnchor="15.200000000000045" AnchorPane.topAnchor="16.2">
+                     <columns>
+                        <TableColumn fx:id="colEmployeeID" prefWidth="156.79999083280563" text="Employee ID" />
+                        <TableColumn fx:id="colEmployeeName" prefWidth="172.0" text="Employee name" />
+                        <TableColumn fx:id="colProductId" prefWidth="168.79998779296875" text="Product ID" />
+                        <TableColumn fx:id="colProductName" prefWidth="188.0" text="Product name" />
+                        <TableColumn fx:id="colAssignmentType" prefWidth="374.4000366210937" text="Assigment Type" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="24.0" layoutY="365.0" prefHeight="340.0" prefWidth="1116.0" style="-fx-background-color: #e7e1e1;" stylesheets="@../css/customer.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
+               <children>
+                  <Text layoutX="25.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID:" wrappingWidth="137.69000244140625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtEmployeeId" layoutX="28.0" layoutY="37.0" prefHeight="10.0" prefWidth="450.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="635.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EmployeeName:" wrappingWidth="137.69000244140625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="25.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product ID:" wrappingWidth="158.48995971679688">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtProductId" layoutX="28.0" layoutY="134.0" prefHeight="38.0" prefWidth="450.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="635.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductName:" wrappingWidth="137.69000244140625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <JFXButton buttonType="RAISED" layoutX="948.0" layoutY="279.0" onAction="#btnDeleteOnAction" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #e74c3c; -fx-background-radius: 20;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="790.0" layoutY="279.0" onAction="#btnSaveOnAction" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #2980b9; -fx-background-radius: 20;" text="Save" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="889.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-save-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="1048.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-delete-48.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="25.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assignment Type:" wrappingWidth="158.48995971679688">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtAssignmentType" layoutX="28.0" layoutY="227.0" prefHeight="10.0" prefWidth="450.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <ComboBox fx:id="cmbProductName" layoutX="634.0" layoutY="134.0" onAction="#cmbProductNameOnAction" prefHeight="38.0" prefWidth="450.0" />
+                  <ComboBox fx:id="cmbEmployeeName" layoutX="634.0" layoutY="36.0" onAction="#cmbEmployeeNameOnAction" prefHeight="38.0" prefWidth="450.0" />
+                  <JFXButton fx:id="btnBack" buttonType="RAISED" layoutX="24.0" layoutY="279.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="138.0" style="-fx-background-color: #2980b9;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <styleClass>
+                  <String fx:value="radius" />
+                  <String fx:value="bodybg-customer" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

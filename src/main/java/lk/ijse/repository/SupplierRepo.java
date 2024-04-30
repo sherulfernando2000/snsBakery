@@ -2,6 +2,7 @@ package lk.ijse.repository;
 
 import lk.ijse.db.DbConnection;
 import lk.ijse.model.Customer;
+import lk.ijse.model.Product;
 import lk.ijse.model.Supplier;
 
 import java.sql.PreparedStatement;
@@ -86,4 +87,50 @@ public class SupplierRepo {
         return supList;
 
     }
+
+    public static List<String> getName() throws SQLException {
+        String sql = "SELECT sName FROM supplier";
+        ResultSet resultSet = DbConnection.getInstance()
+                .getConnection()
+                .prepareStatement(sql)
+                .executeQuery();
+
+        List<String> nameList = new ArrayList<>();
+        while (resultSet.next()) {
+            nameList.add(resultSet.getString(1));
+        }
+        return nameList;
+    }
+
+    public static Supplier searchByName(String nameValue) throws SQLException {
+        String sql = "SELECT * FROM supplier WHERE sName = ?";
+        PreparedStatement pstm = DbConnection.getInstance()
+                .getConnection()
+                .prepareStatement(sql);
+
+        pstm.setObject(1,nameValue);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if (resultSet.next()) {
+            return new Supplier(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4));
+        }
+
+        return null;
+    }
+
+    public static String getName(String supplierId) throws SQLException {
+        String sql = "SELECT sName FROM supplier WHERE supplierId = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setObject(1, supplierId);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if (resultSet.next()) {
+            String sName = resultSet.getString(1);
+
+            return sName;
+        }
+        return null;
+    }
+
+
 }

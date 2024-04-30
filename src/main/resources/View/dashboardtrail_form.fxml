@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ProgressIndicator?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="724.0" prefWidth="1157.0" stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <styleClass>
+      <String fx:value="radius" />
+      <String fx:value="white-bg" />
+   </styleClass>
+   <children>
+      <AnchorPane layoutX="38.0" layoutY="43.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+         <styleClass>
+            <String fx:value="nav-form" />
+            <String fx:value="radius" />
+         </styleClass>
+         <children>
+            <Text fill="WHITE" layoutX="71.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Customers:" wrappingWidth="165.33673095703125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="56.0" fitWidth="92.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-customers-100.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="213.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="416.0" layoutY="43.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+         <styleClass>
+            <String fx:value="nav-form" />
+            <String fx:value="radius" />
+         </styleClass>
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="56.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-order-80.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="48.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Orders:" wrappingWidth="137.33673095703125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="166.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="789.0" layoutY="43.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+         <styleClass>
+            <String fx:value="nav-form" />
+            <String fx:value="radius" />
+         </styleClass>
+         <children>
+            <Text fill="WHITE" layoutX="183.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="68.0" fitWidth="45.0" layoutX="2.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-get-revenue-100.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="55.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Revenue:" wrappingWidth="137.33673095703125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="43.0" layoutY="116.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+         <styleClass>
+            <String fx:value="nav-form" />
+            <String fx:value="radius" />
+         </styleClass>
+         <children>
+            <Text fill="WHITE" layoutX="217.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="68.0" fitWidth="45.0" layoutX="10.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-money-100.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="75.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Revenue:" wrappingWidth="170.13677978515625">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="421.0" layoutY="116.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+         <styleClass>
+            <String fx:value="nav-form" />
+            <String fx:value="radius" />
+         </styleClass>
+         <children>
+            <Text fill="WHITE" layoutX="195.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="59.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Products:" wrappingWidth="160.5367431640625">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-buns-64.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="794.0" layoutY="116.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+         <styleClass>
+            <String fx:value="nav-form" />
+            <String fx:value="radius" />
+         </styleClass>
+         <children>
+            <Text fill="WHITE" layoutX="57.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Employees:" wrappingWidth="178.93670654296875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-customers-100.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="207.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="62.0" layoutY="214.0" prefHeight="361.0" prefWidth="1070.0" style="-fx-background-color: #0f6789;" styleClass="radius" stylesheets="@../css/dashboard.css">
+         <children>
+            <ProgressIndicator layoutX="60.0" layoutY="69.0" maxWidth="238.0" prefHeight="279.0" prefWidth="238.0" progress="0.89" radius="115.0" style="-fx-background-color: white; -fx-max-width: 50; -fx-pref-width: 150;" styleClass="radius" stylesheets="@../css/dashboard.css" viewOrder="12.0" />
+            <Text fill="#cf7500" layoutX="103.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Orders:" wrappingWidth="151.58306312561035">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#cf7500" layoutX="137.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="74.936767578125">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <LineChart layoutX="382.0" layoutY="42.0" prefHeight="362.0" prefWidth="634.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" style="-fx-tick-label-fill: white;" tickLabelFill="#e4d2d2" />
+              </yAxis>
+            </LineChart>
+            <Text fill="#fff7f7" layoutX="643.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profit" textAlignment="CENTER" wrappingWidth="151.58306312561035">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

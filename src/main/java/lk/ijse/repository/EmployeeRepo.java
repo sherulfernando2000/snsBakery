@@ -3,6 +3,7 @@ package lk.ijse.repository;
 import lk.ijse.db.DbConnection;
 import lk.ijse.model.Customer;
 import lk.ijse.model.Employee;
+import lk.ijse.model.Ingredient;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -102,6 +103,52 @@ ADD COLUMN phoneNo VARCHAR(40);
         }
         return empList;
 
+    }
+
+    public static List<String> getName() throws SQLException {
+        String sql = "SELECT eName FROM employee";
+        ResultSet resultSet = DbConnection.getInstance()
+                .getConnection()
+                .prepareStatement(sql)
+                .executeQuery();
+
+        List<String> nameList = new ArrayList<>();
+        while (resultSet.next()) {
+            nameList.add(resultSet.getString(1));
+        }
+        return nameList;
+    }
+
+    public static String getName(String employeeId) throws SQLException {
+        String sql = "SELECT eName FROM employee WHERE employeeId = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setObject(1,employeeId);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if(resultSet.next()){
+            String eName = resultSet.getString(1);
+
+            return eName;
+        }
+        return null;
+
+
+    }
+
+    public static Employee searchByName(String nameValue) throws SQLException {
+        String sql = "SELECT * FROM employee WHERE eName = ?";
+        PreparedStatement pstm = DbConnection.getInstance()
+                .getConnection()
+                .prepareStatement(sql);
+
+        pstm.setObject(1,nameValue);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if (resultSet.next()) {
+            return new Employee(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getDouble(6));
+        }
+
+        return null;
     }
 }
 

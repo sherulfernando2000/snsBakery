@@ -16,7 +16,8 @@
 }
 
 .nav-btn:focused{
-    -fx-background-color:yellow;
+    -fx-background-color:#fff;
+    -fx-text-fill: #000;
 }
 
 .nav-btn:hover{
@@ -30,4 +31,25 @@
 
 .radius{
     -fx-background-radius: 15px;
+}
+
+.round-box{
+    -fx-background-radius: 80%;
+    -fx-border-radius: 80%;
+    -fx-border-width: 5px;
+}
+
+
+
+
+.custom-progress-indicator .bar {
+    -fx-background-color: White; /* Color of the progress bar */
+    -fx-min-width: 50px;         /* Minimum width of the progress bar */
+    -fx-pref-width: 150px;       /* Preferred width of the progress bar */
+}
+
+.bodybg-customer {
+    -fx-background-image: url("../icon/bakeryIcons2.png");
+    -fx-background-size: 100% 100%; /* Optional: Adjust as needed */
+
 }

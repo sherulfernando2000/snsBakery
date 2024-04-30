@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.model.Product;
 import lk.ijse.model.Tm.ProductTm;
 import lk.ijse.repository.ProductRepo;
+import lk.ijse.repository.WasteRepo;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -211,6 +212,25 @@ public class ProductFormController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    @FXML
+    void btnWasteOnAction(ActionEvent event) throws SQLException {
+            List<Product> product = ProductRepo.getAll();
+
+        try {
+            boolean isSave = WasteRepo.save(product);
+            if(isSave) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Waste save!").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Waste saved Unsuccessfully!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+           // ProductRepo.updateQty;
 
     }
 }

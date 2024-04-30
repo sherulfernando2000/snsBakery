@@ -7,8 +7,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.text.Text;
+import lk.ijse.repository.CustomerRepo;
+import lk.ijse.repository.EmployeeRepo;
+import lk.ijse.repository.OrderRepo;
+import lk.ijse.repository.ProductRepo;
+import javafx.scene.control.Label;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class DashBoardFormController {
     public AnchorPane mainNode;
@@ -20,6 +29,31 @@ public class DashBoardFormController {
 
     @FXML
     private AnchorPane rootNode;
+
+    @FXML
+    private Label lblDate;
+
+    @FXML
+    private Label lblTime;
+
+
+    @FXML
+    private Text txtDailyRevenue;
+
+    @FXML
+    private Text txtMonthlyRevenue;
+
+    @FXML
+    private Text txtNoOfCustomers;
+
+    @FXML
+    private Text txtNoOfEmployee;
+
+    @FXML
+    private Text txtNoOfOrders;
+
+    @FXML
+    private Text txtNoOfProducts;
 
     public void navigateTo(String url) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource(url));
@@ -44,7 +78,20 @@ public class DashBoardFormController {
         this.rootNode.getChildren().setAll(rootNode);*/
     }
 
+    public void initialize() throws SQLException {
+        int noOfCustomer = CustomerRepo.getAll().size();
+        txtNoOfCustomers.setText(String.valueOf(noOfCustomer));
+        int noOfOrders = OrderRepo.getOderCount();
+        txtNoOfOrders.setText(String.valueOf(noOfOrders));
+        int noOfProduct = ProductRepo.getAll().size();
+        txtNoOfProducts.setText(String.valueOf(noOfProduct));
+        int noOfEmployee = EmployeeRepo.getAll().size();
+        txtNoOfEmployee.setText(String.valueOf(noOfEmployee));
+        lblDate.setText(String.valueOf(LocalDate.now()));
+        LocalTime now1 = LocalTime.of(LocalTime.now().getHour(), LocalTime.now().getMinute());
+        lblTime.setText(String.valueOf(now1));
 
+    }
     @FXML
     void btnDashboardOnAction(ActionEvent event) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard_form.fxml"));
@@ -107,6 +154,10 @@ public class DashBoardFormController {
     @FXML
     void btnSuppliesOnAction(ActionEvent event) throws IOException {
         navigateTo("/View/Supplier_Form.fxml");
+
+    }
+
+    public void txtSet(){
 
     }
 

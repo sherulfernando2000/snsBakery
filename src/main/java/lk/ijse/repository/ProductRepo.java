@@ -153,4 +153,49 @@ public class ProductRepo {
 
         return pstm.executeUpdate() > 0;
     }
+
+    public static List<String> getName() throws SQLException {
+        String sql = "SELECT pName FROM product";
+        ResultSet resultSet = DbConnection.getInstance()
+                .getConnection()
+                .prepareStatement(sql)
+                .executeQuery();
+
+        List<String> nameList = new ArrayList<>();
+        while (resultSet.next()) {
+            nameList.add(resultSet.getString(1));
+        }
+        return nameList;
+    }
+
+    public static String getName(String productId) throws SQLException {
+        String sql = "SELECT pName FROM product WHERE productId = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setObject(1,productId);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if(resultSet.next()){
+            String pName = resultSet.getString(1);
+
+            return pName;
+        }
+        return null;
+
+    }
+
+    public static Product searchByName(String nameValue) throws SQLException {
+        String sql = "SELECT * FROM product WHERE pName = ?";
+        PreparedStatement pstm = DbConnection.getInstance()
+                .getConnection()
+                .prepareStatement(sql);
+
+        pstm.setObject(1,nameValue);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if (resultSet.next()) {
+            return new Product(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getInt(5));
+        }
+
+        return null;
+    }
 }

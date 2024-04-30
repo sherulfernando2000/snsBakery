@@ -2,6 +2,9 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Lighting?>
@@ -21,7 +24,14 @@
                <children>
                   <AnchorPane prefHeight="800.0" prefWidth="298.0" stylesheets="@../css/dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane layoutX="-2.0" prefHeight="155.0" prefWidth="299.0" styleClass="header" stylesheets="@../css/dashboard.css" />
+                        <AnchorPane layoutX="-2.0" prefHeight="155.0" prefWidth="299.0" styleClass="header" stylesheets="@../css/dashboard.css">
+                           <children>
+                              <Label layoutX="101.0" layoutY="118.0" prefHeight="30.0" prefWidth="128.0" text="Welcome" textFill="#f4f2f2">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
                      </children>
                   </AnchorPane>
                </children>
@@ -30,167 +40,190 @@
          <center>
             <AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1192.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutX="24.0" layoutY="72.2" prefHeight="724.0" prefWidth="1157.0" stylesheets="@../css/dashboard.css" AnchorPane.bottomAnchor="3.7999999999999545" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="36.799999999999955" AnchorPane.topAnchor="72.2">
-                     <styleClass>
-                        <String fx:value="radius" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <children>
-                        <AnchorPane layoutX="38.0" layoutY="33.0" prefHeight="322.0" prefWidth="357.0" stylesheets="@../css/dashboard.css">
-                           <styleClass>
-                              <String fx:value="nav-form" />
-                              <String fx:value="radius" />
-                           </styleClass>
-                           <children>
-                              <ImageView fitHeight="202.0" fitWidth="207.0" layoutX="78.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/icons8-customers-100.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Customers:" wrappingWidth="165.33673095703125">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="110.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="137.33673095703125">
-                                 <font>
-                                    <Font size="34.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="412.0" layoutY="33.0" prefHeight="322.0" prefWidth="357.0" stylesheets="@../css/dashboard.css">
-                           <styleClass>
-                              <String fx:value="nav-form" />
-                              <String fx:value="radius" />
-                           </styleClass>
-                           <children>
-                              <ImageView fitHeight="202.0" fitWidth="207.0" layoutX="65.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/icons8-order-80.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="WHITE" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Orders:" wrappingWidth="137.33673095703125">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="97.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="       20" wrappingWidth="137.33673095703125">
-                                 <font>
-                                    <Font size="34.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="780.0" layoutY="33.0" prefHeight="322.0" prefWidth="357.0" stylesheets="@../css/dashboard.css">
-                           <styleClass>
-                              <String fx:value="nav-form" />
-                              <String fx:value="radius" />
-                           </styleClass>
-                           <children>
-                              <ImageView fitHeight="202.0" fitWidth="207.0" layoutX="80.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/icons8-get-revenue-100.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Revenue:" wrappingWidth="137.33673095703125">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="160.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20000" wrappingWidth="137.33673095703125">
-                                 <font>
-                                    <Font size="34.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="96.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RS:" wrappingWidth="63.73675537109375">
-                                 <font>
-                                    <Font size="34.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="38.0" layoutY="385.0" prefHeight="322.0" prefWidth="357.0" stylesheets="@../css/dashboard.css">
-                           <styleClass>
-                              <String fx:value="nav-form" />
-                              <String fx:value="radius" />
-                           </styleClass>
-                           <children>
-                              <ImageView fitHeight="202.0" fitWidth="207.0" layoutX="65.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/icons8-money-100.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="WHITE" layoutX="20.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Revenue:" wrappingWidth="170.13677978515625">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="153.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20000" wrappingWidth="137.33673095703125">
-                                 <font>
-                                    <Font size="34.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="89.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RS:" wrappingWidth="63.73675537109375">
-                                 <font>
-                                    <Font size="34.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="412.0" layoutY="385.0" prefHeight="322.0" prefWidth="357.0" stylesheets="@../css/dashboard.css">
-                           <styleClass>
-                              <String fx:value="nav-form" />
-                              <String fx:value="radius" />
-                           </styleClass>
-                           <children>
-                              <ImageView fitHeight="202.0" fitWidth="207.0" layoutX="78.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/icons8-buns-64.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="WHITE" layoutX="30.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Products:" wrappingWidth="160.5367431640625">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="110.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="50" textAlignment="CENTER" wrappingWidth="137.33673095703125">
-                                 <font>
-                                    <Font size="34.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="782.0" layoutY="385.0" prefHeight="322.0" prefWidth="357.0" stylesheets="@../css/dashboard.css">
-                           <styleClass>
-                              <String fx:value="nav-form" />
-                              <String fx:value="radius" />
-                           </styleClass>
-                           <children>
-                              <ImageView fitHeight="202.0" fitWidth="207.0" layoutX="78.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/icons8-customers-100.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="WHITE" layoutX="21.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Employees:" wrappingWidth="178.93670654296875">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="110.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="30" textAlignment="CENTER" wrappingWidth="137.33673095703125">
-                                 <font>
-                                    <Font size="34.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
                   <AnchorPane prefHeight="62.0" prefWidth="1217.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
                      <children>
                         <Label alignment="CENTER" layoutX="482.0" layoutY="9.0" prefHeight="38.0" prefWidth="306.0" text="DASH BOARD" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblDate" alignment="CENTER" layoutX="754.0" layoutY="12.0" prefHeight="25.0" prefWidth="212.0" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblTime" alignment="CENTER" layoutX="961.0" layoutY="13.0" prefHeight="25.0" prefWidth="212.0" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="-1.0" layoutY="61.0" prefHeight="750.0" prefWidth="1221.0" style="-fx-background-color: #bebebe;" stylesheets="@../css/dashboard.css">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="bodybg-customer" />
+                        <String fx:value="white-bg" />
+                     </styleClass>
+                     <children>
+                        <AnchorPane layoutX="38.0" layoutY="43.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+                           <styleClass>
+                              <String fx:value="nav-form" />
+                              <String fx:value="radius" />
+                           </styleClass>
+                           <children>
+                              <Text fill="WHITE" layoutX="71.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Customers:" wrappingWidth="165.33673095703125">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="56.0" fitWidth="92.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icon/icons8-customers-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fx:id="txtNoOfCustomers" fill="WHITE" layoutX="213.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="416.0" layoutY="43.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+                           <styleClass>
+                              <String fx:value="nav-form" />
+                              <String fx:value="radius" />
+                           </styleClass>
+                           <children>
+                              <ImageView fitHeight="45.0" fitWidth="56.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icon/icons8-order-80.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" layoutX="48.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Orders:" wrappingWidth="137.33673095703125">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="txtNoOfOrders" fill="WHITE" layoutX="166.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="793.0" layoutY="43.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+                           <styleClass>
+                              <String fx:value="nav-form" />
+                              <String fx:value="radius" />
+                           </styleClass>
+                           <children>
+                              <Text fx:id="txtDailyRevenue" fill="WHITE" layoutX="208.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="68.0" fitWidth="45.0" layoutX="2.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icon/icons8-get-revenue-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" layoutX="58.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Revenue: RS." wrappingWidth="150.13677978515625">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="43.0" layoutY="116.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+                           <styleClass>
+                              <String fx:value="nav-form" />
+                              <String fx:value="radius" />
+                           </styleClass>
+                           <children>
+                              <Text fx:id="txtMonthlyRevenue" fill="WHITE" layoutX="245.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="68.0" fitWidth="45.0" layoutX="10.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icon/icons8-money-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" layoutX="72.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Revenue: Rs." wrappingWidth="182.13677978515625">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="421.0" layoutY="116.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+                           <styleClass>
+                              <String fx:value="nav-form" />
+                              <String fx:value="radius" />
+                           </styleClass>
+                           <children>
+                              <Text fx:id="txtNoOfProducts" fill="WHITE" layoutX="195.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="59.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Products:" wrappingWidth="160.5367431640625">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icon/icons8-buns-64.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="794.0" layoutY="116.0" prefHeight="56.0" prefWidth="344.0" stylesheets="@../css/dashboard.css">
+                           <styleClass>
+                              <String fx:value="nav-form" />
+                              <String fx:value="radius" />
+                           </styleClass>
+                           <children>
+                              <Text fill="WHITE" layoutX="57.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Employees:" wrappingWidth="178.93670654296875">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icon/icons8-customers-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fx:id="txtNoOfEmployee" fill="WHITE" layoutX="207.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="62.0" layoutY="214.0" prefHeight="430.0" prefWidth="1070.0" style="-fx-background-color: #0f6789;" styleClass="radius" stylesheets="@../css/dashboard.css">
+                           <children>
+                              <LineChart layoutX="172.0" layoutY="49.0" prefHeight="364.0" prefWidth="682.0">
+                                 <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis side="LEFT" style="-fx-tick-label-fill: white;" tickLabelFill="#e4d2d2" />
+                                 </yAxis>
+                              </LineChart>
+                              <Text fill="#fff7f7" layoutX="429.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Month Revenue" textAlignment="CENTER" wrappingWidth="200.3830509185791">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <Label layoutX="326.0" layoutY="652.0" prefHeight="59.0" prefWidth="534.0" style="-fx-background-color: white;" styleClass="radius" stylesheets="@../css/dashboard.css" text="WELCOME TO S &amp; S BAKERY SYSTEM" textFill="#08482b">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
                            </font>
                         </Label>
                      </children>
@@ -199,16 +232,6 @@
             </AnchorPane>
          </center>
       </BorderPane>
-      <Label layoutX="48.0" layoutY="121.0" prefHeight="30.0" prefWidth="128.0" text="Welcome," textFill="#f4f2f2">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="162.0" layoutY="121.0" prefHeight="30.0" prefWidth="128.0" text="Sunimal" textFill="#f4f2f2">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="103.0" fitWidth="125.0" layoutX="105.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icon/icons8-manager-52.png" />

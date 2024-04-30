@@ -184,8 +184,15 @@ public class SupplierFormController {
     }
 
     public void btnIngredientOnAction(ActionEvent actionEvent) throws IOException {
-            AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/ingredient_form.fxml"));
+            AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/View/ingredient_form.fxml"));
             this.rootNode.getChildren().removeAll();
             this.rootNode.getChildren().setAll(rootNode);
+    }
+
+    @FXML
+    void btnSupplierOrderOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/View/supplierOrder_form.fxml"));
+        this.rootNode.getChildren().removeAll();
+        this.rootNode.getChildren().setAll(rootNode);
     }
 }

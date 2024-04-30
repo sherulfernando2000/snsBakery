@@ -20,7 +20,7 @@
             <AnchorPane prefHeight="800.0" prefWidth="1192.0" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane layoutX="-2.0" prefHeight="62.0" prefWidth="1217.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css" />
-                  <AnchorPane layoutX="24.0" layoutY="64.0" prefHeight="712.0" prefWidth="1139.0" stylesheets="@../css/dashboard.css" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="64.0">
+                  <AnchorPane layoutX="24.0" layoutY="69.0" prefHeight="712.0" prefWidth="1139.0" stylesheets="@../css/dashboard.css" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="69.0">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="white-bg" />
@@ -42,7 +42,7 @@
                               </TableView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="24.0" layoutY="365.0" prefHeight="340.0" prefWidth="1116.0" style="-fx-background-color: #e7e1e1;" stylesheets="@../css/customer.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
+                        <AnchorPane layoutX="24.0" layoutY="365.0" prefHeight="340.0" prefWidth="1116.0" stylesheets="@../css/customer.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
                            <children>
                               <Text layoutX="20.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="137.69000244140625">
                                  <font>
@@ -127,6 +127,8 @@
                            </children>
                            <styleClass>
                               <String fx:value="radius" />
+                              <String fx:value="bodybg-customer" />
+                              <String fx:value="header" />
                               <String fx:value="white-bg" />
                            </styleClass>
                         </AnchorPane>

@@ -141,9 +141,15 @@
                         <Font size="17.0" />
                      </font>
                   </TextField>
+                  <JFXButton fx:id="btnTaskForm" buttonType="RAISED" layoutX="24.0" layoutY="278.0" onAction="#btnTaskFormOnAction" prefHeight="42.0" prefWidth="138.0" style="-fx-background-color: #2980b9;" text="Task Form" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXButton>
                </children>
                <styleClass>
                   <String fx:value="radius" />
+                  <String fx:value="bodybg-customer" />
                   <String fx:value="white-bg" />
                </styleClass>
             </AnchorPane>

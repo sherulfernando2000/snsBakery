@@ -280,7 +280,7 @@ public class OrderFormController {
 
     @FXML
     void btnCancelOrderOnAction(ActionEvent event) {
-        obList.removeAll();
+        obList.clear();
         tblOrder.refresh();
     }
 
