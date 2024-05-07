@@ -164,7 +164,7 @@ public class ProductEmployeeFormController {
             boolean isSaved = ProductEmployeeRepo.save(productEmployee);
             if (isSaved ) {
                 new Alert(Alert.AlertType.CONFIRMATION,"supplier order saved").show();
-
+                loadAllProductEmployee();
 
             }
         } catch (SQLException e) {

@@ -47,22 +47,26 @@
                               <Font name="System Bold" size="26.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblDate" alignment="CENTER" layoutX="754.0" layoutY="12.0" prefHeight="25.0" prefWidth="212.0" textFill="WHITE">
+                        <Label fx:id="lblDate" alignment="CENTER" layoutX="869.0" layoutY="15.0" prefHeight="27.0" prefWidth="330.0" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblTime" alignment="CENTER" layoutX="961.0" layoutY="13.0" prefHeight="25.0" prefWidth="212.0" textFill="WHITE">
+                        <Label fx:id="lblTime" alignment="CENTER" layoutX="1082.0" layoutY="14.0" prefHeight="27.0" prefWidth="114.0" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="51.0" fitWidth="81.0" layoutX="2.0" layoutY="6.0" opacity="0.87" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/sns-removebg-preview.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="-1.0" layoutY="61.0" prefHeight="750.0" prefWidth="1221.0" style="-fx-background-color: #bebebe;" stylesheets="@../css/dashboard.css">
+                  <AnchorPane layoutX="3.0" layoutY="68.0" prefHeight="750.0" prefWidth="1221.0" style="-fx-background-color: #beaeae;" stylesheets="@../css/dashboard.css">
                      <styleClass>
                         <String fx:value="radius" />
-                        <String fx:value="bodybg-customer" />
                         <String fx:value="white-bg" />
                      </styleClass>
                      <children>
@@ -357,7 +361,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
-      <Button layoutX="4.0" layoutY="694.0" mnemonicParsing="false" onAction="#btnLogoutOnAction" prefHeight="51.0" prefWidth="291.0" style="-fx-border-radius: 20;" styleClass="nav-btn" stylesheets="@../css/dashboard.css" text="LOGOUT" textFill="#f7f1f1">
+      <Button layoutX="4.0" layoutY="694.0" mnemonicParsing="false" onAction="#btnLogoutOnAction" prefHeight="51.0" prefWidth="291.0" style="-fx-border-radius: 20;" stylesheets="@../css/dashboard.css" text="LOGOUT" textFill="#f7f1f1">
          <font>
             <Font size="20.0" />
          </font>
@@ -371,6 +375,10 @@
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
+         <styleClass>
+            <String fx:value="nav-logOutBtn" />
+            <String fx:value="nav-btn" />
+         </styleClass>
       </Button>
       <ImageView fitHeight="36.0" fitWidth="46.0" layoutX="56.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
          <image>

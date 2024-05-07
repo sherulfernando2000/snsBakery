@@ -117,14 +117,24 @@
                </font>
             </Label>
             <JFXComboBox fx:id="cbxCardCash" layoutX="149.0" layoutY="288.0" prefHeight="26.0" prefWidth="122.0" />
-            <JFXButton buttonType="RAISED" layoutX="889.0" layoutY="304.0" onAction="#btnPlaceOrderOnAction" prefHeight="44.0" prefWidth="187.0" style="-fx-background-color: #0f6789;" text="Place Order" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="585.0" layoutY="318.0" onAction="#btnPlaceOrderOnAction" prefHeight="32.0" prefWidth="154.0" style="-fx-background-color: #0f6789;" text="Place Order" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXButton>
-            <TextField fx:id="txtDiscountPrec" layoutX="152.0" layoutY="160.0" onAction="#txtDiscountPrecOnAction" prefHeight="26.0" prefWidth="116.0" />
+            <TextField fx:id="txtDiscountPrec" layoutX="152.0" layoutY="160.0" onAction="#txtDiscountPrecOnAction" onKeyPressed="#txtDiscountOnKeyReleased" prefHeight="26.0" prefWidth="116.0" />
             <JFXComboBox fx:id="cbxDisType" layoutX="608.0" layoutY="159.0" prefHeight="26.0" prefWidth="122.0" />
-            <TextField fx:id="txtAmount" layoutX="611.0" layoutY="285.0" onAction="#txtAmountOnAction" prefHeight="26.0" prefWidth="116.0" />
+            <TextField fx:id="txtAmount" layoutX="611.0" layoutY="285.0" onAction="#txtAmountOnAction" onKeyReleased="#txtSAmountOnKeyReleased" prefHeight="26.0" prefWidth="116.0" />
+            <JFXButton buttonType="RAISED" layoutX="749.0" layoutY="319.0" onAction="#btnPrintBillOnAction" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #0f6789;" text="Print Bill" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="913.0" layoutY="319.0" onAction="#btnNextOrderOnAction" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #0f6789;" text="Next Order" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
          </children>
          <styleClass>
             <String fx:value="white-bg" />

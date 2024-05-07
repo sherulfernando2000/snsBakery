@@ -13,7 +13,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Util.Regex;
 import lk.ijse.model.Ingredient;
 import lk.ijse.model.Supplier;
 import lk.ijse.model.SupplierOrder;
@@ -202,6 +204,7 @@ public class supplierOrderFormController {
         try {
             boolean isDeleted = SupplierOrderRepo.detele(supplierOrderTm.getSId(), supplierOrderTm.getIId(),supplierOrderTm.getDate());
             new Alert(Alert.AlertType.CONFIRMATION,"Supplier Order Deleted.").show();
+            loadAllSupplierOrder();
             clearFields();
 
         } catch (SQLException e) {
@@ -223,15 +226,31 @@ public class supplierOrderFormController {
 
         SupplierOrder supplierOrder = new SupplierOrder( ingredientId,supplierId, date, qty, price, total);
 
-        try {
-            boolean isSaved = SupplierOrderRepo.save(supplierOrder);
-            if (isSaved ) {
-                new Alert(Alert.AlertType.CONFIRMATION,"supplier order saved").show();
-                clearFields();
+        switch (isValied()) {
+            case 0:
+                try {
+                    boolean isSaved = SupplierOrderRepo.save(supplierOrder);
+                    if (isSaved ) {
+                        new Alert(Alert.AlertType.CONFIRMATION,"supplier order saved").show();
+                        loadAllSupplierOrder();
+                        clearFields();
 
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                ;
+                break;
+
+            case 1:
+                new Alert(Alert.AlertType.ERROR, "Invalid price format").show();
+                break;
+            case 2:
+                new Alert(Alert.AlertType.ERROR, "Invalid qty format").show();
+                break;
+
+
+
         }
 
 
@@ -296,6 +315,22 @@ public class supplierOrderFormController {
         LocalDate myDate = datePicker.getValue();
         String myFormattedDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         txtDate.setText(myFormattedDate);
+    }
+
+    @FXML
+    void txtPriceOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtPrice);
+    }
+
+    @FXML
+    void txtQtyOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.QTY,txtQty);
+    }
+
+    public int isValied(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtPrice)) return 1;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.QTY,txtQty)) return 2;
+        return 0;
     }
 
 }

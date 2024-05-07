@@ -27,7 +27,7 @@ public class CustomerRepo {
     }
 
     public static boolean update(Customer customer) throws SQLException {
-        String sql = "UPDATE customer SET cName = ?, address = ?, phoneNo = ? WHERE customerId = ?";
+        String sql = "UPDATE customer SET cName = ?, email = ?, phoneNo = ? WHERE customerId = ?";
         PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
         pstm.setObject(1,customer.getName());
         pstm.setObject(2,customer.getAddress());

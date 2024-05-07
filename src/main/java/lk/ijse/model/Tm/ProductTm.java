@@ -11,7 +11,7 @@ public class ProductTm {
     private String id;
     private String name;
 
-    private int price ;
+    private double price ;
     private String category;
     private int qty ;
 

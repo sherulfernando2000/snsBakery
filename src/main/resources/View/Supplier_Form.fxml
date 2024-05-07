@@ -61,7 +61,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtSupplierId" layoutX="23.0" layoutY="87.0" onAction="#txtSupplierIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtSupplierId" layoutX="23.0" layoutY="87.0" onAction="#txtSupplierIdOnAction" onKeyReleased="#txtSupplierIDOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtSupplierName" layoutX="630.0" layoutY="87.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtSupplierName" layoutX="630.0" layoutY="87.0" onKeyReleased="#txtSuuplierNameOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -81,7 +81,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtSupplierTel" layoutX="26.0" layoutY="191.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtSupplierTel" layoutX="26.0" layoutY="191.0" onKeyReleased="#txtSupplierPhoneNoOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -91,7 +91,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtSupplierAddress" layoutX="633.0" layoutY="191.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtSupplierAddress" layoutX="633.0" layoutY="191.0" onKeyReleased="#txtSupplierAddressOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>

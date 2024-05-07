@@ -1,5 +1,8 @@
 package lk.ijse.controller;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,6 +10,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
+import lk.ijse.Util.Regex;
+import lk.ijse.db.DbConnection;
 import lk.ijse.model.*;
 import lk.ijse.model.Tm.CartTm;
 import lk.ijse.repository.*;
@@ -16,8 +23,11 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javafx.scene.layout.AnchorPane;
 
@@ -27,6 +37,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
+import javax.mail.MessagingException;
 
 
 public class OrderFormController {
@@ -243,20 +259,30 @@ public class OrderFormController {
 
     }
 
+
+
+
+
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
-        String code = lblCode.getText();
-        String description = cmbDescription.getValue();
-        double unitPrice = Double.parseDouble(lblUnitPrice.getText());
-        int qty = Integer.parseInt(txtQty.getText());
-        double total = qty * unitPrice;
+        if (isValied()) {
+            String code = lblCode.getText();
+            String description = cmbDescription.getValue();
+            double unitPrice = Double.parseDouble(lblUnitPrice.getText());
+            int qty = Integer.parseInt(txtQty.getText());
+            double total = qty * unitPrice;
 
-        CartTm tm = new CartTm(code, description, qty, unitPrice, total);
-        obList.add(tm);
-        tblOrder.setItems(obList);
-        calculateGrossTotal();
-        getTotalItemQty();
-        txtQty.setText("");
+            CartTm tm = new CartTm(code, description, qty, unitPrice, total);
+            obList.add(tm);
+            tblOrder.setItems(obList);
+            calculateGrossTotal();
+            getTotalItemQty();
+            txtQty.setText("");
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Invalid inputs to fields").show();
+
+        }
+
 
 
 
@@ -286,6 +312,7 @@ public class OrderFormController {
 
     @FXML
     void btnConfirmOrderOnAction(ActionEvent event) throws IOException {
+
         makeOrderTransactionObjects();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/payment_form.fxml"));
         AnchorPane rootNode = loader.load();
@@ -386,6 +413,23 @@ public class OrderFormController {
         }
     }
 
+    @FXML
+    void txtPhoneNoOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PHONENO,txtCustomerTel);
+    }
+
+    @FXML
+    void txtQtyOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.QTY,txtQty);
+    }
+
+    public boolean isValied(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PHONENO,txtCustomerTel)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.QTY,txtQty)) return false;
+
+        return true;
+    }
+
     //payment controller
 
     @FXML
@@ -461,14 +505,25 @@ public class OrderFormController {
 
     @FXML
     void txtDiscountPrecOnAction(ActionEvent event) {
-        calculateTotalSaving();
-        calculateNetAmount();
+        if (isValiedPayment1()) {
+            calculateTotalSaving();
+            calculateNetAmount();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Invalid input").show();
+        }
+
 
     }
 
     @FXML
     void txtAmountOnAction(ActionEvent event) {
+        if (isValiedPayment2()) {
             calculateBalance();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Invalid input").show();
+
+        }
+
     }
 
     private void calculateBalance() {
@@ -478,47 +533,48 @@ public class OrderFormController {
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) throws IOException {
-        String paymentId = lblPaymentId.getText();
-        String paymentMethod = cbxCardCash.getValue();
-        LocalDate now = LocalDate.now();
-        String date = String.valueOf(now);
-        double discountAmount = Double.parseDouble(lblTotalSaving.getText());
-        double totalAmount = Double.parseDouble(lblNetAmount.getText());
-        String orderId = order.getOrderId();
-        String discountType = cbxDisType.getValue();
-        double discountPrecentage = Double.parseDouble(txtDiscountPrec.getText());
+        if (isValiedPayment()) {
+            String paymentId = lblPaymentId.getText();
+            String paymentMethod = cbxCardCash.getValue();
+            LocalDate now = LocalDate.now();
+            String date = String.valueOf(now);
+            double discountAmount = Double.parseDouble(lblTotalSaving.getText());
+            double totalAmount = Double.parseDouble(lblNetAmount.getText());
+            String orderId = order.getOrderId();
+            String discountType = cbxDisType.getValue();
+            double discountPrecentage = Double.parseDouble(txtDiscountPrec.getText());
 
-        Payment payment = new Payment(paymentId, paymentMethod, date, discountAmount, totalAmount, orderId,discountType, discountPrecentage);
+            Payment payment = new Payment(paymentId, paymentMethod, date, discountAmount, totalAmount, orderId,discountType, discountPrecentage);
 
-       PlaceOrder po = new PlaceOrder(order,odList,payment);
+            PlaceOrder po = new PlaceOrder(order,odList,payment);
 
-        try {
-            boolean isPlaced =  PlaceOrderRepo.placeOrder(po);
-            if(isPlaced) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
+            try {
+                boolean isPlaced =  PlaceOrderRepo.placeOrder(po);
+                if(isPlaced) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
+                    //new code set
+                /*String recipientEmail = "sherul.dhanushka@gmail.com"; // Replace with recipient email
+                String subject = "Order Confirmation";
+                String body = "Your order has been successfully placed. Thank you!";
+                EmailUtil.sendEmail(recipientEmail, subject, body);*/
+
+                    // Show confirmation message to the user
+                    //new Alert(Alert.AlertType.CONFIRMATION, "Order Placed! Email sent.").show();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
+                }
+
+            } catch (SQLException e) {
+                // Print the exception message
+                System.out.println("Exception occurred: " + e.getMessage());
+                throw new RuntimeException(e.getMessage());
+        /*} catch (MessagingException e) {
+            throw new RuntimeException(e);*/
             }
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Invalid input to fields").show();
 
-        } catch (SQLException e) {
-            // Print the exception message
-            System.out.println("Exception occurred: " + e.getMessage());
-            throw new RuntimeException(e.getMessage());
         }
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/order_form.fxml"));
-        AnchorPane rootNode = loader.load();
-
-        obList.clear();
-
-        // Set the controller for the loaded FXML file
-        OrderFormController controller = loader.getController();
-        controller.initializeOrder(); // Call your custom initialization method
-
-        this.rootNodeP.getChildren().removeAll();
-        this.rootNodeP.getChildren().setAll(rootNode);
-
-        //obList.removeAll();
 
 
 
@@ -533,6 +589,65 @@ public class OrderFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }*/
+    }
+
+
+    public void btnPrintBillOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/reports/bakery.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String,Object> data = new HashMap<>();
+        data.put("orderId",order.getOrderId());
+        data.put("cashOrCard", txtAmount.getText());
+        data.put("balance", String.valueOf(balance));
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
+
+    }
+
+    @FXML
+    void btnNextOrderOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/order_form.fxml"));
+        AnchorPane rootNode = loader.load();
+
+        obList.clear();
+
+        // Set the controller for the loaded FXML file
+        OrderFormController controller = loader.getController();
+        controller.initializeOrder(); // Call your custom initialization method
+
+        this.rootNodeP.getChildren().removeAll();
+        this.rootNodeP.getChildren().setAll(rootNode);
+
+        //obList.removeAll();
+    }
+
+    @FXML
+    void txtDiscountOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtDiscountPrec);
+    }
+
+    @FXML
+    void txtSAmountOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtAmount);
+    }
+
+    public boolean isValiedPayment(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtDiscountPrec)) return false;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtAmount)) return false;
+
+        return true;
+    }
+
+    public boolean isValiedPayment1(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtDiscountPrec)) return false;
+        return true;
+    }
+
+    public boolean isValiedPayment2(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtAmount)) return false;
+        return true;
     }
 
 

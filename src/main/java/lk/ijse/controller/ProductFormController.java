@@ -7,10 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Util.Regex;
 import lk.ijse.model.Product;
 import lk.ijse.model.Tm.ProductTm;
 import lk.ijse.repository.ProductRepo;
+import lk.ijse.repository.SupplierRepo;
 import lk.ijse.repository.WasteRepo;
 
 import java.sql.SQLException;
@@ -136,20 +139,39 @@ public class ProductFormController {
         String name = txtProductIName.getText();
         String category = String.valueOf(cmbProductCategory.getValue());
         int qty = Integer.parseInt(txtProductQty.getText());
-        int price = Integer.parseInt(txtProductIPrice.getText());
+        double price = Double.parseDouble(txtProductIPrice.getText());
 
         Product product = new Product(id,name,category,qty,price);
 
-        try {
-            boolean isSaved = ProductRepo.save(product);
-            if (isSaved ) {
-                new Alert(Alert.AlertType.CONFIRMATION,"product saved successfully.").show();
-                clearFields();
-                loadAllProducts();
+        switch (isValied()) {
+            case 0:
+                try {
+                    boolean isSaved = ProductRepo.save(product);
+                    if (isSaved ) {
+                        new Alert(Alert.AlertType.CONFIRMATION,"product saved successfully.").show();
+                        clearFields();
+                        loadAllProducts();
 
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                ;
+                break;
+
+            case 1:
+                new Alert(Alert.AlertType.ERROR, "Invalid Product Id format should be in P001 type").show();
+                break;
+            case 2:
+                new Alert(Alert.AlertType.ERROR, "Invalid Product name format").show();
+                break;
+            case 3:
+                new Alert(Alert.AlertType.ERROR, "Invalid price format").show();
+                break;
+            case 4:
+                new Alert(Alert.AlertType.ERROR, "Invalid qty format").show();
+                break;
+
         }
 
 
@@ -233,4 +255,35 @@ public class ProductFormController {
            // ProductRepo.updateQty;
 
     }
+    @FXML
+    void txtPriceOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtProductIPrice);
+    }
+
+    @FXML
+    void txtProductIdOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PID,txtProductId);
+    }
+
+    @FXML
+    void txtPrroductNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtProductIName);
+    }
+
+    @FXML
+    void txtQtyOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.QTY,txtProductQty);
+    }
+
+    public int isValied(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PID,txtProductId)) return 1;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtProductIName)) return 2;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtProductIPrice)) return 3;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.QTY,txtProductQty)) return 4;
+        return 0;
+    }
+
+
+
+
 }

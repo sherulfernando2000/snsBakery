@@ -11,7 +11,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Util.Regex;
 import lk.ijse.model.Ingredient;
 import lk.ijse.model.Tm.IngredientTm;
 import lk.ijse.repository.IngredientRepo;
@@ -128,15 +130,31 @@ public class IngredientFormController {
 
         Ingredient ingredient = new Ingredient(id, name, category);
 
+        switch (isValied()) {
+            case 0:
+                try {
+                    boolean isSaved = IngredientRepo.save(ingredient);
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "Ingredient saved!").show();
+                        loadAllIngredients();
+                        clearFields();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                ;
+                break;
 
-        try {
-            boolean isSaved = IngredientRepo.save(ingredient);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Ingredient saved!").show();
-                clearFields();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            case 1:
+                new Alert(Alert.AlertType.ERROR, "Invalid Ingredient id format should be in I001 type").show();
+                break;
+            case 2:
+                new Alert(Alert.AlertType.ERROR, "Invalid ingredient name format").show();
+                break;
+            case 3:
+                new Alert(Alert.AlertType.ERROR, "Invalid category name format").show();
+                break;
+
         }
     }
 
@@ -185,6 +203,28 @@ public class IngredientFormController {
         } else {
             new Alert(Alert.AlertType.INFORMATION, "ingredient not found!").show();
         }
+    }
+
+    @FXML
+    void txtCategoryOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtIngredientCategory);
+    }
+
+    @FXML
+    void txtIngredientNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtIngredientName);
+    }
+
+    @FXML
+    void txtIngreditentIDOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.IID,txtIngredientId);
+    }
+
+    public int isValied(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.IID,txtIngredientId)) return 1;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtIngredientName)) return 2;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtIngredientCategory)) return 3;
+        return 0;
     }
 
 }

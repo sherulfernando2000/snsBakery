@@ -46,7 +46,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeId" layoutX="28.0" layoutY="49.0" onAction="#txtEmpIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeId" layoutX="28.0" layoutY="49.0" onAction="#txtEmpIdOnAction" onKeyReleased="#txtEmployeeIdOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -56,7 +56,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeName" layoutX="635.0" layoutY="49.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeName" layoutX="635.0" layoutY="49.0" onKeyReleased="#txtEmployeeNameOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -66,7 +66,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeAddress" layoutX="28.0" layoutY="136.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeAddress" layoutX="28.0" layoutY="136.0" onKeyReleased="#txtEmployeeAddressOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -76,7 +76,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeTel" layoutX="635.0" layoutY="136.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeTel" layoutX="635.0" layoutY="136.0" onKeyReleased="#txtPhoneNoOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -126,7 +126,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeePosition" layoutX="28.0" layoutY="228.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeePosition" layoutX="28.0" layoutY="228.0" onKeyReleased="#txtPositionOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -136,7 +136,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtEmployeeSalary" layoutX="635.0" layoutY="228.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtEmployeeSalary" layoutX="635.0" layoutY="228.0" onKeyReleased="#txtSalaryOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>

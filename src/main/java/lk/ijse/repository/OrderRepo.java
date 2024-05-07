@@ -9,7 +9,8 @@ import java.sql.SQLException;
 
 public class OrderRepo {
     public static String getCurrentId() throws SQLException {
-        String sql = "SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1";
+        //String sql = "SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1";
+        String sql = "SELECT CONCAT('O-', MAX(CAST(SUBSTRING_INDEX(orderId, '-', -1) AS UNSIGNED))) AS max_order_id FROM orders;\n";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 

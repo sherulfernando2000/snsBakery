@@ -60,7 +60,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtIngredientId" layoutX="25.0" layoutY="66.0" onAction="#txtIdSearchOnAction" prefHeight="38.0" prefWidth="450.0">
+                  <TextField fx:id="txtIngredientId" layoutX="25.0" layoutY="66.0" onAction="#txtIdSearchOnAction" onKeyReleased="#txtIngreditentIDOnKeyReleased" prefHeight="38.0" prefWidth="450.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -115,12 +115,12 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtIngredientCategory" layoutX="25.0" layoutY="139.0" prefHeight="10.0" prefWidth="450.0">
+                  <TextField fx:id="txtIngredientCategory" layoutX="25.0" layoutY="139.0" onKeyReleased="#txtCategoryOnKeyReleased" prefHeight="10.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtIngredientName" layoutX="634.0" layoutY="66.0" prefHeight="38.0" prefWidth="450.0">
+                  <TextField fx:id="txtIngredientName" layoutX="634.0" layoutY="66.0" onKeyReleased="#txtIngredientNameOnKeyReleased" prefHeight="38.0" prefWidth="450.0">
                      <font>
                         <Font size="15.0" />
                      </font>

@@ -1,13 +1,17 @@
 package lk.ijse.controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import  javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import lk.ijse.repository.CustomerRepo;
 import lk.ijse.repository.EmployeeRepo;
 import lk.ijse.repository.OrderRepo;
@@ -17,7 +21,10 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class DashBoardFormController {
     public AnchorPane mainNode;
@@ -87,10 +94,22 @@ public class DashBoardFormController {
         txtNoOfProducts.setText(String.valueOf(noOfProduct));
         int noOfEmployee = EmployeeRepo.getAll().size();
         txtNoOfEmployee.setText(String.valueOf(noOfEmployee));
-        lblDate.setText(String.valueOf(LocalDate.now()));
-        LocalTime now1 = LocalTime.of(LocalTime.now().getHour(), LocalTime.now().getMinute());
-        lblTime.setText(String.valueOf(now1));
+        setDatetime();
 
+    }
+
+
+    private void setDatetime() {
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), event -> {
+                    LocalDateTime now = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd       HH:mm:ss");
+                    String formattedDateTime = now.format(formatter);
+                    lblDate.setText(formattedDateTime);
+                })
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
     @FXML
     void btnDashboardOnAction(ActionEvent event) throws IOException {
@@ -102,8 +121,8 @@ public class DashBoardFormController {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setTitle("Bakery Management System");
-
-
+        /*Image icon = new Image(this.getClass().getResourceAsStream("/icon/sns-removebg-preview.png"));
+        stage.getIcons().add(icon);*/
 
     }
 

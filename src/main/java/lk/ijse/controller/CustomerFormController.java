@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Util.Regex;
 import lk.ijse.model.Customer;
 import lk.ijse.model.Tm.CustomerTm;
 import lk.ijse.repository.CustomerRepo;
@@ -118,16 +120,49 @@ public class CustomerFormController {
 
         Customer customer = new Customer(id,name,tel,address);
 
-        try {
-            boolean isSaved = CustomerRepo.save(customer);
-            if (isSaved ) {
-                new Alert(Alert.AlertType.CONFIRMATION,"customer saved").show();
-                clearFields();
-                loadAllCustomers();
+        /*if (isValied() == 0) {
+            try {
+                boolean isSaved = CustomerRepo.save(customer);
+                if (isSaved ) {
+                    new Alert(Alert.AlertType.CONFIRMATION,"customer saved").show();
+                    clearFields();
+                    loadAllCustomers();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        }else {
+            new Alert(Alert.AlertType.ERROR)
+        }*/
+        switch (isValied()){
+            case 0:
+                try {
+                    boolean isSaved = CustomerRepo.save(customer);
+                    if (isSaved ) {
+                        new Alert(Alert.AlertType.CONFIRMATION,"customer saved").show();
+                        clearFields();
+                        loadAllCustomers();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                };
+                break;
+
+            case 1:
+                new Alert(Alert.AlertType.ERROR,"Invalid customer id format should be in C001 type").show();
+                break;
+             case 2:
+                new Alert(Alert.AlertType.ERROR,"Invalid name format").show();
+                break;
+             case 3:
+                new Alert(Alert.AlertType.ERROR,"Invalid phone no format").show();
+                break;
+             case 4:
+                new Alert(Alert.AlertType.ERROR,"Invalid email format").show();
+                break;
+
         }
+
 
     }
 
@@ -200,5 +235,33 @@ public class CustomerFormController {
         }
 
     }
+
+    public void txtCustomerIDOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.Util.TextField.CID,txtCustomerId);
+    }
+
+    @FXML
+    void txtCustomerPhonenoOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PHONENO,txtCustomerTel);
+    }
+
+    @FXML
+    void txtCustomerEmailOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.EMAIL,txtCustomerAddress);
+    }
+
+    @FXML
+    void txtCustomerNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtCustomerName);
+    }
+
+    public int isValied(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.CID,txtCustomerId)) return 1;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtCustomerName)) return 2;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PHONENO,txtCustomerTel)) return 3;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.EMAIL,txtCustomerAddress)) return 4;
+        return 0;
+    }
+
 }
 

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class PaymentRepo {
     public static String getCurrentPaymentId() throws SQLException {
-        String sql = "SELECT paymentId FROM payment ORDER BY orderId DESC LIMIT 1";
+        String sql = "SELECT CONCAT('P-', MAX(CAST(SUBSTRING_INDEX(paymentId, '-', -1) AS UNSIGNED))) AS max_payment_id FROM payment;\n";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 

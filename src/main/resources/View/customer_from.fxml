@@ -37,7 +37,7 @@
                                   <TableColumn fx:id="colCustomerId" prefWidth="270.0" text="Customer ID" />
                                     <TableColumn fx:id="colCustomerName" prefWidth="270.0" text="Customer Name" />
                                     <TableColumn fx:id="colPhoneNo" prefWidth="270.0" text="Phone Number" />
-                                    <TableColumn fx:id="colAddress" prefWidth="270.0" text="Address" />
+                                    <TableColumn fx:id="colAddress" prefWidth="270.0" text="Email" />
                                 </columns>
                               </TableView>
                            </children>
@@ -49,7 +49,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtCustomerId" layoutX="23.0" layoutY="87.0" onAction="#txtCustomerIdOnAction" prefHeight="42.0" prefWidth="450.0">
+                              <TextField fx:id="txtCustomerId" layoutX="23.0" layoutY="87.0" onAction="#txtCustomerIdOnAction" onKeyReleased="#txtCustomerIDOnKeyReleased" prefHeight="42.0" prefWidth="450.0" promptText="input in C001 format">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -59,17 +59,17 @@
                                     <Font size="17.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtCustomerName" layoutX="630.0" layoutY="87.0" prefHeight="42.0" prefWidth="450.0">
+                              <TextField fx:id="txtCustomerName" layoutX="630.0" layoutY="87.0" onKeyReleased="#txtCustomerNameOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </TextField>
-                              <Text layoutX="23.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Address:" wrappingWidth="158.48995971679688">
+                              <Text layoutX="23.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer E-Mail:" wrappingWidth="158.48995971679688">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtCustomerAddress" layoutX="26.0" layoutY="191.0" prefHeight="42.0" prefWidth="450.0">
+                              <TextField fx:id="txtCustomerAddress" layoutX="26.0" layoutY="191.0" onKeyReleased="#txtCustomerEmailOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -79,7 +79,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtCustomerTel" layoutX="633.0" layoutY="191.0" onAction="#txtCustomerTelOnAction" prefHeight="42.0" prefWidth="450.0">
+                              <TextField fx:id="txtCustomerTel" layoutX="633.0" layoutY="191.0" onAction="#txtCustomerTelOnAction" onKeyReleased="#txtCustomerPhonenoOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                                  <font>
                                     <Font size="17.0" />
                                  </font>

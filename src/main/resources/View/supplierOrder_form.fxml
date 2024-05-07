@@ -117,7 +117,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtPrice" layoutX="28.0" layoutY="227.0" prefHeight="10.0" prefWidth="450.0">
+                  <TextField fx:id="txtPrice" layoutX="28.0" layoutY="227.0" onKeyReleased="#txtPriceOnKeyReleased" prefHeight="10.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -127,7 +127,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtQty" layoutX="634.0" layoutY="224.0" prefHeight="10.0" prefWidth="450.0">
+                  <TextField fx:id="txtQty" layoutX="634.0" layoutY="224.0" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="10.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>

@@ -9,8 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import lk.ijse.Util.Regex;
 import lk.ijse.model.Supplier;
 import lk.ijse.model.Tm.SupplierTm;
+import lk.ijse.repository.CustomerRepo;
 import lk.ijse.repository.SupplierRepo;
 import javafx.scene.layout.AnchorPane;
 
@@ -121,16 +124,40 @@ public class SupplierFormController {
 
         Supplier supplier = new Supplier(id,name,tel,address);
 
-        try {
-            boolean isSaved = SupplierRepo.save(supplier);
-            if (isSaved ) {
-                new Alert(Alert.AlertType.CONFIRMATION,"supplier saved").show();
-                clearFields();
-                loadAllSuppliers();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        switch (isValied()) {
+            case 0:
+                try {
+                    boolean isSaved = SupplierRepo.save(supplier);
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "supplier saved").show();
+                        clearFields();
+                        loadAllSuppliers();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                ;
+                break;
+
+            case 1:
+                new Alert(Alert.AlertType.ERROR, "Invalid supplier Id format should be in S001 type").show();
+                break;
+            case 2:
+                new Alert(Alert.AlertType.ERROR, "Invalid supplier name format").show();
+                break;
+            case 3:
+                new Alert(Alert.AlertType.ERROR, "Invalid phone no format").show();
+                break;
+            case 4:
+                new Alert(Alert.AlertType.ERROR, "Invalid address format").show();
+                break;
+
         }
+
+
+
+
+
 
     }
 
@@ -195,4 +222,33 @@ public class SupplierFormController {
         this.rootNode.getChildren().removeAll();
         this.rootNode.getChildren().setAll(rootNode);
     }
+
+    @FXML
+    void txtSupplierAddressOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.ADDRESS,txtSupplierAddress);
+    }
+
+    @FXML
+    void txtSupplierIDOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.SID,txtSupplierId);
+    }
+
+    @FXML
+    void txtSupplierPhoneNoOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PHONENO,txtSupplierTel);
+    }
+
+    @FXML
+    void txtSuuplierNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtSupplierName);
+    }
+
+    public int isValied(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.SID,txtSupplierId)) return 1;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtSupplierName)) return 2;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PHONENO,txtSupplierTel)) return 3;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.ADDRESS,txtSupplierAddress)) return 4;
+        return 0;
+    }
+
 }

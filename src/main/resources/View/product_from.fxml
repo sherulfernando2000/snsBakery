@@ -56,7 +56,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtProductIName" layoutX="635.0" layoutY="49.0" onAction="#txtSearchNameOnAction" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtProductIName" layoutX="635.0" layoutY="49.0" onAction="#txtSearchNameOnAction" onKeyReleased="#txtPrroductNameOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -66,7 +66,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtProductIPrice" layoutX="28.0" layoutY="136.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtProductIPrice" layoutX="28.0" layoutY="136.0" onKeyReleased="#txtPriceOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -121,13 +121,13 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtProductQty" layoutX="28.0" layoutY="228.0" prefHeight="42.0" prefWidth="450.0">
+                  <TextField fx:id="txtProductQty" layoutX="28.0" layoutY="228.0" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
                   <JFXComboBox fx:id="cmbProductCategory" focusColor="#fafafa" layoutX="633.0" layoutY="136.0" prefHeight="42.0" prefWidth="450.0" style="-fx-background-color: white;" unFocusColor="#050505" />
-                  <TextField fx:id="txtProductId" layoutX="28.0" layoutY="49.0" onAction="#txtsearchIdOnAction" prefHeight="42.0" prefWidth="450.0" text="P003">
+                  <TextField fx:id="txtProductId" layoutX="28.0" layoutY="49.0" onAction="#txtsearchIdOnAction" onKeyReleased="#txtProductIdOnKeyReleased" prefHeight="42.0" prefWidth="450.0">
                      <font>
                         <Font size="17.0" />
                      </font>

@@ -10,8 +10,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.Util.Regex;
 import lk.ijse.model.Employee;
 import lk.ijse.model.Tm.EmployeeTm;
 import lk.ijse.repository.EmployeeRepo;
@@ -148,16 +150,43 @@ public class EmployeeFormController {
 
         Employee employee = new Employee(id,name,address,tel,position,salary);
 
-        try {
-            boolean isSaved = EmployeeRepo.save(employee);
-            if (isSaved ) {
-                new Alert(Alert.AlertType.CONFIRMATION,"Employee saved").show();
-                clearFields();
-                loadAllEmployees();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        switch (isValied()) {
+            case 0:
+                try {
+                    boolean isSaved = EmployeeRepo.save(employee);
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "Employee saved").show();
+                        clearFields();
+                        loadAllEmployees();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                ;
+                break;
+
+            case 1:
+                new Alert(Alert.AlertType.ERROR, "Invalid Employee id format should be in E001 type").show();
+                break;
+            case 2:
+                new Alert(Alert.AlertType.ERROR, "Invalid name format").show();
+                break;
+            case 3:
+                new Alert(Alert.AlertType.ERROR, "Invalid address format").show();
+                break;
+            case 4:
+                new Alert(Alert.AlertType.ERROR, "Invalid phone no format").show();
+                break;
+            case 5:
+                new Alert(Alert.AlertType.ERROR, "Invalid position format").show();
+                break;
+            case 6:
+                new Alert(Alert.AlertType.ERROR, "Invalid salary format").show();
+                break;
+
+
         }
+
     }
 
     private void clearFields() {
@@ -219,6 +248,46 @@ public class EmployeeFormController {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/View/ProductEmployee_form.fxml"));
         this.rootNode.getChildren().removeAll();
         this.rootNode.getChildren().setAll(rootNode);
+    }
+
+    @FXML
+    void txtEmployeeAddressOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.ADDRESS,txtEmployeeAddress);
+    }
+
+    @FXML
+    void txtEmployeeIdOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.EID,txtEmployeeId);
+    }
+
+    @FXML
+    void txtEmployeeNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtEmployeeName);
+    }
+
+    @FXML
+    void txtPhoneNoOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PHONENO,txtEmployeeTel);
+    }
+
+    @FXML
+    void txtPositionOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtEmployeePosition);
+    }
+
+    @FXML
+    void txtSalaryOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtEmployeeSalary);
+    }
+
+    public int isValied(){
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.EID,txtEmployeeId)) return 1;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtEmployeeName)) return 2;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.ADDRESS,txtEmployeeAddress)) return 3;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PHONENO,txtEmployeeTel)) return 4;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtEmployeePosition)) return 5;
+        if (!Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtEmployeeSalary)) return 6;
+        return 0;
     }
 
 
