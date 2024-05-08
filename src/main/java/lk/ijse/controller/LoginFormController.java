@@ -1,14 +1,17 @@
 package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.Util.Regex;
 import lk.ijse.repository.UserRepo;
 
 import java.io.IOException;
@@ -98,4 +101,15 @@ public class LoginFormController {
         stage.setTitle("signUp form");
 
     }
+
+    @FXML
+    void PasswordOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.PASSWORD,txtPassword);
+    }
+
+    @FXML
+    void UserNameOnKeyOnreleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtUserName);
+    }
+
 }

@@ -6,12 +6,16 @@ import  javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import lk.ijse.db.DbConnection;
 import lk.ijse.repository.CustomerRepo;
 import lk.ijse.repository.EmployeeRepo;
 import lk.ijse.repository.OrderRepo;
@@ -19,6 +23,8 @@ import lk.ijse.repository.ProductRepo;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -62,6 +68,12 @@ public class DashBoardFormController {
     @FXML
     private Text txtNoOfProducts;
 
+    @FXML
+    private AreaChart<?, ?> barChart;
+
+    @FXML
+    private AreaChart<?, ?> barChart1;
+
     public void navigateTo(String url) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource(url));
         this.rootNode.getChildren().removeAll();
@@ -95,6 +107,8 @@ public class DashBoardFormController {
         int noOfEmployee = EmployeeRepo.getAll().size();
         txtNoOfEmployee.setText(String.valueOf(noOfEmployee));
         setDatetime();
+        lineChart();
+        lineChart1();
 
     }
 
@@ -179,6 +193,109 @@ public class DashBoardFormController {
     public void txtSet(){
 
     }
+
+
+    public void lineChart(){
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Bakery");
+
+    PreparedStatement stm = null;
+        try {
+        stm = DbConnection.getInstance().getConnection().prepareStatement("SELECT date, SUM(totalAmount) AS totalAmountSum\n" +
+                "FROM payment\n" +
+                "WHERE date >= CURDATE() - INTERVAL 6 DAY\n" +
+                "GROUP BY date\n" +
+                "ORDER BY date ASC;");
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    ResultSet rst = null;
+        try {
+        rst = stm.executeQuery();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+        while (true) {
+        try {
+            if (!rst.next()) break;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        String date = null;
+        try {
+            date = rst.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        int count = 0;
+        try {
+            count = rst.getInt(2);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        series1.getData().add(new XYChart.Data<>(date, count));
+    }
+        barChart.getData().addAll(series1);
+    }
+
+
+    public void lineChart1(){
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Bakery");
+
+        PreparedStatement stm = null;
+        try {
+            stm = DbConnection.getInstance().getConnection().prepareStatement("SELECT\n" +
+                    "    date,\n" +
+                    "    COUNT(orderId) AS orderCount\n" +
+                    "FROM\n" +
+                    "    orders\n" +
+                    "WHERE\n" +
+                    "    date >= CURDATE() - INTERVAL 6 DAY  -- Select data for the last 7 days\n" +
+                    "GROUP BY\n" +
+                    "    date\n" +
+                    "ORDER BY\n" +
+                    "    date ASC;\n");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        ResultSet rst = null;
+        try {
+            rst = stm.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        while (true) {
+            try {
+                if (!rst.next()) break;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            String date = null;
+            try {
+                date = rst.getString(1);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            int count = 0;
+            try {
+                count = rst.getInt(2);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            series1.getData().add(new XYChart.Data<>(date, count));
+        }
+        barChart1.getData().addAll(series1);
+    }
+
 
 
 }

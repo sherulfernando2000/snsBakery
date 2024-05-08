@@ -9,7 +9,7 @@ public class EmailUtil {
 
     public static void sendEmail(String recipient, String subject, String body) throws MessagingException {
         String username = "sherulfernando11@gmail.com"; // Replace with your email
-        String password = "#sd20ferdi"; // Replace with your password
+        String password = "zrmi owfc cznu tbju"; // Replace with your password
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");

@@ -10,28 +10,46 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.supplierOrderFormController">
+<AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.supplierOrderFormController">
    <children>
-      <AnchorPane layoutY="-1.0" prefHeight="62.0" prefWidth="1192.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+      <AnchorPane prefHeight="69.0" prefWidth="1198.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
          <children>
-            <JFXButton fx:id="btnSupplier" buttonType="RAISED" layoutX="82.0" layoutY="3.0" onAction="#btnSupplierOnAction" prefHeight="56.0" prefWidth="228.0" text="SUPPLIER FORM" textFill="WHITE" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="882.8000000000001">
+            <JFXButton fx:id="btnSupplier" alignment="TOP_LEFT" buttonType="RAISED" layoutX="82.0" layoutY="3.0" onAction="#btnSupplierOnAction" prefHeight="56.0" prefWidth="224.0" style="-fx-border-color: white; -fx-border-radius: 5;" text="SUPPLIER FORM" textFill="WHITE" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="950.0">
                <font>
-                  <Font size="26.0" />
+                  <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="860.0" layoutY="3.0" prefHeight="56.0" prefWidth="259.0" style="-fx-background-color: #0f6789;" text="SUPPLIER ORDER" textFill="WHITE">
+            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" layoutX="860.0" layoutY="3.0" prefHeight="56.0" prefWidth="235.0" style="-fx-background-color: #0f6789;" text="SUPPLIER ORDER" textFill="WHITE" AnchorPane.rightAnchor="79.0">
                <font>
-                  <Font size="26.0" />
+                  <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnIngredient" buttonType="RAISED" layoutX="482.0" layoutY="3.0" onAction="#btnIngredientOnAction" prefHeight="56.0" prefWidth="259.0" text="INGREDIENT FORM" textFill="WHITE">
+            <JFXButton fx:id="btnIngredient" alignment="TOP_LEFT" buttonType="RAISED" layoutX="482.0" layoutY="3.0" onAction="#btnIngredientOnAction" prefHeight="56.0" prefWidth="259.0" style="-fx-border-color: white; -fx-border-radius: 5;" text="INGREDIENT FORM" textFill="WHITE">
                <font>
-                  <Font size="26.0" />
+                  <Font size="24.0" />
                </font>
             </JFXButton>
+            <Line endX="1029.5999755859375" endY="2.4999923706054688" layoutX="168.0" layoutY="66.0" startX="-168.00001525878906" startY="7.62939453125E-6" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="5.0" />
+            <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="713.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-click-30.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="280.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="280.0">
+               <image>
+                  <Image url="@../icon/icons8-click-30.png" />
+               </image>
+            </ImageView>
+            <Line endX="254.0999755859375" endY="-20.00000762939453" layoutX="941.0" layoutY="88.0" startX="-105.79998779296875" startY="-20.00000762939453" stroke="#0f6789" strokeLineCap="ROUND" strokeWidth="5.0" />
+            <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="1094.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-click-30.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="39.0" layoutY="81.0" prefHeight="712.0" prefWidth="1139.0" stylesheets="@../css/dashboard.css">
@@ -60,7 +78,7 @@
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="24.0" layoutY="365.0" prefHeight="340.0" prefWidth="1116.0" style="-fx-background-color: #e7e1e1;" stylesheets="@../css/customer.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
+            <AnchorPane layoutX="24.0" layoutY="365.0" prefHeight="340.0" prefWidth="1116.0" style="-fx-border-color: white; -fx-border-radius: 5;" stylesheets="@../css/customer.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
                <children>
                   <Text layoutX="25.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID:" wrappingWidth="137.69000244140625">
                      <font>

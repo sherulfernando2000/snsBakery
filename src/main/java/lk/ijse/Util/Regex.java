@@ -46,6 +46,10 @@ public class Regex {
             case PID:
                 filed = "^([P][0-9]{3,10})$";
                 break;
+            case PASSWORD:
+                filed = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
+                break;
+
 
 
         }

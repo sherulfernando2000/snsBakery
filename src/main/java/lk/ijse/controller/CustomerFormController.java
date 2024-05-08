@@ -12,12 +12,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.Util.Regex;
 import lk.ijse.model.Customer;
+import lk.ijse.model.EmailUtil;
 import lk.ijse.model.Tm.CustomerTm;
 import lk.ijse.repository.CustomerRepo;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
+import javax.mail.MessagingException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -56,6 +58,11 @@ public class CustomerFormController {
 
     @FXML
     private TableView<CustomerTm> tblCustomer;
+
+    private String addressForEmail;
+
+    private String nameForEmail;
+
 
     public void initialize(){
         setCellValueFactory();
@@ -117,6 +124,8 @@ public class CustomerFormController {
         String name = txtCustomerName.getText();
         String tel = txtCustomerTel.getText();
         String address = txtCustomerAddress.getText();
+        addressForEmail = txtCustomerAddress.getText();
+        nameForEmail = txtCustomerName.getText();
 
         Customer customer = new Customer(id,name,tel,address);
 
@@ -140,12 +149,16 @@ public class CustomerFormController {
                     boolean isSaved = CustomerRepo.save(customer);
                     if (isSaved ) {
                         new Alert(Alert.AlertType.CONFIRMATION,"customer saved").show();
-                        clearFields();
                         loadAllCustomers();
+                        emailSent();
+                        clearFields();
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
-                };
+                } catch (MessagingException e) {
+                    throw new RuntimeException(e);
+                }
+                ;
                 break;
 
             case 1:
@@ -179,6 +192,7 @@ public class CustomerFormController {
         String name = txtCustomerName.getText();
         String tel = txtCustomerTel.getText();
         String address = txtCustomerAddress.getText();
+
 
         Customer customer = new Customer(id,name,tel,address);
 
@@ -261,6 +275,18 @@ public class CustomerFormController {
         if (!Regex.setTextColor(lk.ijse.Util.TextField.PHONENO,txtCustomerTel)) return 3;
         if (!Regex.setTextColor(lk.ijse.Util.TextField.EMAIL,txtCustomerAddress)) return 4;
         return 0;
+    }
+
+    public void emailSent() throws MessagingException {
+        String recipientEmail = addressForEmail; // Replace with recipient email
+                String subject = "Welcome to S & S Bakery!";
+                String body = "Dear "+nameForEmail+",\n"+"Welcome to S & S Bakery! Thank you for registering with us. Get ready for exclusive offers and seasonal discounts delivered straight to your inbox.\n" +
+                        "\n" +
+                        "We look forward to serving you delicious treats!";
+                EmailUtil.sendEmail(recipientEmail, subject, body);
+
+        // Show confirmation message to the user
+        new Alert(Alert.AlertType.CONFIRMATION, "Customer saved &  Email sent.").show();
     }
 
 }
