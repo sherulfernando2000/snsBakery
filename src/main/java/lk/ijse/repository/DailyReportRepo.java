@@ -49,4 +49,28 @@ public class DailyReportRepo {
         }
         return dailyRepoList;
     }
+
+    public static double getDailyRevenue() throws SQLException {
+        String sql = "SELECT\n" +
+                "    DATE_FORMAT(date, '%Y-%m-%d') AS PaymentDate,\n" +
+                "    SUM(totalAmount) AS DailyRevenue\n" +
+                "FROM\n" +
+                "    payment\n" +
+                "WHERE\n" +
+                "    date = CURDATE()\n" +
+                "GROUP BY\n" +
+                "    date;\n";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+
+        double total =0;
+        if (resultSet.next()){
+
+            total = Double.parseDouble(resultSet.getString(2));
+
+        }
+        return total;
+    }
 }

@@ -45,4 +45,29 @@ public class weeklyReportRepo {
         return weeklyRepoList;
     }
 
+    public static double getMonthlyRevenue() throws SQLException {
+        String sql = "SELECT\n" +
+                "    DATE_FORMAT(date, '%Y-%m') AS PaymentMonth,\n" +
+                "    SUM(totalAmount) AS MonthlyRevenue\n" +
+                "FROM\n" +
+                "    payment\n" +
+                "WHERE\n" +
+                "    YEAR(date) = YEAR(CURDATE()) AND MONTH(date) = MONTH(CURDATE())\n" +
+                "GROUP BY\n" +
+                "    DATE_FORMAT(date, '%Y-%m')\n" +
+                "ORDER BY\n" +
+                "    PaymentMonth;\n";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+
+        double total =0;
+        if (resultSet.next()){
+
+            total = Double.parseDouble(resultSet.getString(2));
+
+        }
+        return total;
+    }
 }

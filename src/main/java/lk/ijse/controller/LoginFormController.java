@@ -3,6 +3,7 @@ package lk.ijse.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -34,7 +35,7 @@ public class LoginFormController {
             try {
                 boolean isCorrect = UserRepo.checkCredential(userName, pw);
                 if (isCorrect ) {
-                    navigateToDashBoard();
+                    navigateToDashBoard(userName);
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -65,11 +66,25 @@ public class LoginFormController {
         stage.getIcons().add(icon);
     }*/
 
-    private void navigateToDashBoard() throws IOException {
+    private void navigateToDashBoard(String userName) throws IOException {
         try {
-            AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard_form.fxml"));
-            Scene scene = new Scene(rootNode);
+           /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashboard_form.fxml"));
+            Parent dashboardRoot = loader.load();
+            DashboardFormController controller = loader.getController();
+            controller.setUsername(username); // Pass the username to the DashboardFormController
+            Scene scene = new Scene(dashboardRoot);
+            Stage stage = (Stage) rootNode.getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.setTitle("Dashboard Form");*/
 
+            /*AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard_form.fxml"));
+            Scene scene = new Scene(rootNode);*/
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashboard_form.fxml"));
+            Parent dashboardRoot = loader.load();
+            DashBoardFormController controller = loader.getController();
+            controller.setUsername(userName);
+            Scene scene = new Scene(dashboardRoot);
             Stage stage = (Stage) this.rootNode.getScene().getWindow();
             stage.setScene(scene);
             stage.centerOnScreen();
@@ -110,6 +125,16 @@ public class LoginFormController {
     @FXML
     void UserNameOnKeyOnreleased(KeyEvent event) {
         Regex.setTextColor(lk.ijse.Util.TextField.NAME,txtUserName);
+    }
+
+    @FXML
+    void txtPasswordOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void txtUserNameOnAction(ActionEvent event) {
+        txtPassword.requestFocus();
     }
 
 }

@@ -16,10 +16,7 @@ import javafx.stage.Stage;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lk.ijse.db.DbConnection;
-import lk.ijse.repository.CustomerRepo;
-import lk.ijse.repository.EmployeeRepo;
-import lk.ijse.repository.OrderRepo;
-import lk.ijse.repository.ProductRepo;
+import lk.ijse.repository.*;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
@@ -48,6 +45,9 @@ public class DashBoardFormController {
 
     @FXML
     private Label lblTime;
+
+    @FXML
+    private Label lblUserName;
 
 
     @FXML
@@ -106,6 +106,11 @@ public class DashBoardFormController {
         txtNoOfProducts.setText(String.valueOf(noOfProduct));
         int noOfEmployee = EmployeeRepo.getAll().size();
         txtNoOfEmployee.setText(String.valueOf(noOfEmployee));
+        double dailyRevenue = DailyReportRepo.getDailyRevenue();
+        txtDailyRevenue.setText(String.valueOf(dailyRevenue));
+        double monthlyRevenue = weeklyReportRepo.getMonthlyRevenue();
+        txtMonthlyRevenue.setText(String.valueOf(monthlyRevenue));
+
         setDatetime();
         lineChart();
         lineChart1();
@@ -296,6 +301,9 @@ public class DashBoardFormController {
         barChart1.getData().addAll(series1);
     }
 
+    public void setUsername(String username) {
 
+        lblUserName.setText(username);
+    }
 
 }
