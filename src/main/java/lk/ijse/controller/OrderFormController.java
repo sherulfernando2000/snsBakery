@@ -385,6 +385,7 @@ public class OrderFormController {
                 lblCode.setText(product.getId());
                 lblUnitPrice.setText(String.valueOf(product.getPrice()));
                 lblQtyOnHand.setText(String.valueOf(product.getQty()));
+                txtQty.requestFocus();
             }
 
             txtQty.requestFocus();
@@ -403,6 +404,7 @@ public class OrderFormController {
             if (customer != null) {
                 lblCustomerId.setText(customer.getId());
                 lblCustomerName.setText(customer.getName());
+
             }else{
                 new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
             }
@@ -429,6 +431,29 @@ public class OrderFormController {
 
         return true;
     }
+
+
+    @FXML
+    void txtQtyOnAction(ActionEvent event) {
+        if (isValied()) {
+            String code = lblCode.getText();
+            String description = cmbDescription.getValue();
+            double unitPrice = Double.parseDouble(lblUnitPrice.getText());
+            int qty = Integer.parseInt(txtQty.getText());
+            double total = qty * unitPrice;
+
+            CartTm tm = new CartTm(code, description, qty, unitPrice, total);
+            obList.add(tm);
+            tblOrder.setItems(obList);
+            calculateGrossTotal();
+            getTotalItemQty();
+            txtQty.setText("");
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Invalid inputs to fields").show();
+
+        }
+    }
+
 
     //payment controller
 
@@ -508,6 +533,8 @@ public class OrderFormController {
         if (isValiedPayment1()) {
             calculateTotalSaving();
             calculateNetAmount();
+            txtAmount.requestFocus();
+
         }else{
             new Alert(Alert.AlertType.ERROR,"Invalid input").show();
         }
@@ -648,6 +675,11 @@ public class OrderFormController {
     public boolean isValiedPayment2(){
         if (!Regex.setTextColor(lk.ijse.Util.TextField.PRICE,txtAmount)) return false;
         return true;
+    }
+
+    @FXML
+    void cbxCardCashOnAction(ActionEvent event) {
+        txtAmount.requestFocus();
     }
 
 

@@ -132,7 +132,7 @@
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <JFXButton buttonType="RAISED" layoutX="25.0" layoutY="279.0" onAction="#btnWasteOnAction" opacity="0.78" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #a10587; -fx-background-radius: 20;" text="Waste" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" layoutX="25.0" layoutY="279.0" onAction="#btnWasteOnAction" opacity="0.78" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #2980b9; -fx-background-radius: 20;" text="Waste" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>

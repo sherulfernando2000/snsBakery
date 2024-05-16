@@ -7,20 +7,24 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.text.Text;
 import lk.ijse.db.DbConnection;
 import lk.ijse.model.Tm.DailyReportTm;
+import lk.ijse.model.Tm.DailyWasteReportTm;
 import lk.ijse.repository.DailyReportRepo;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javafx.scene.chart.AreaChart;
+import lk.ijse.repository.DashboardRepo;
 
 public class DailyReportFormController {
 
@@ -48,11 +52,36 @@ public class DailyReportFormController {
     @FXML
     private AreaChart<?, ?> barChart;
 
+    @FXML
+    private TextField txtSearchByDate;
+
+    @FXML
+    private DatePicker datePicker;
+
+    @FXML
+    private Text txtDailyRevenueSearch;
+
+    @FXML
+    private TableColumn<?, ?> colDayW;
+
+    @FXML
+    private TableColumn<?, ?> colDescriptionW;
+
+    @FXML
+    private TableColumn<?, ?> colQtyW;
+
+    @FXML
+    private TableView<DailyWasteReportTm> tblWaste;
+
+
+
 
     public void initialize(){
         setCellValueFactory();
+        setCellValueFactory1();
         loadAllDailyReport();
         lineChart();
+        loadAllDailyWaste();
     }
 
     private void setCellValueFactory() {
@@ -137,5 +166,58 @@ public class DailyReportFormController {
         }
         barChart.getData().addAll(series1);
     }
+
+    private void setCellValueFactory1() {
+        colDayW.setCellValueFactory(new PropertyValueFactory<>("day"));
+        colDescriptionW.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        colQtyW.setCellValueFactory(new PropertyValueFactory<>("qty"));
+
+    }
+
+
+    private void loadAllDailyWaste(){
+        ObservableList<DailyWasteReportTm> obList = FXCollections.observableArrayList();
+        try {
+            List<DailyWasteReportTm> repoList = DailyReportRepo.getAllWaste();
+            for (DailyWasteReportTm dailyWasteReportTm : repoList) {
+                DailyWasteReportTm tm = new DailyWasteReportTm(
+                        dailyWasteReportTm.getDay(),
+                        dailyWasteReportTm.getDesc(),
+                        dailyWasteReportTm.getQty()
+                );
+
+                obList.add(tm);
+            }
+
+            tblWaste.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @FXML
+    void txtSearchBydateOnAction(ActionEvent event) {
+        if (!txtSearchByDate.getText().isEmpty()) {
+            try {
+                double dailyRevenue = DashboardRepo.getDailyRevenue(txtSearchByDate.getText());
+                txtDailyRevenueSearch.setText(String.valueOf(dailyRevenue));
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Input a date").show();
+        }
+    }
+
+    @FXML
+    void getDate(ActionEvent event) {
+        LocalDate myDate = datePicker.getValue();
+        String myFormattedDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        txtSearchByDate.setText(myFormattedDate);
+        txtSearchByDate.requestFocus();
+    }
+
+
 
 }

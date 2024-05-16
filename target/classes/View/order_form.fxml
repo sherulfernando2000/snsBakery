@@ -131,7 +131,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtQty" layoutX="435.0" layoutY="219.0" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="27.0" prefWidth="74.0">
+                  <TextField fx:id="txtQty" layoutX="435.0" layoutY="219.0" onAction="#txtQtyOnAction" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="27.0" prefWidth="74.0">
                      <font>
                         <Font size="18.0" />
                      </font></TextField>

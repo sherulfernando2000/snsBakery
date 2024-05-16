@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,6 +21,7 @@ import javafx.scene.control.TableView;
 
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -287,6 +289,13 @@ public class CustomerFormController {
 
         // Show confirmation message to the user
         new Alert(Alert.AlertType.CONFIRMATION, "Customer saved &  Email sent.").show();
+    }
+
+    @FXML
+    void btnEmailOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/View/offers_form.fxml"));
+        this.rootNode.getChildren().removeAll();
+        this.rootNode.getChildren().setAll(rootNode);
     }
 
 }

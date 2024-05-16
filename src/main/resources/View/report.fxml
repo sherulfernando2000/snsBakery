@@ -4,13 +4,17 @@
 <?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DailyReportFormController">
    <children>
@@ -45,14 +49,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="4.0" layoutY="81.0" prefHeight="795.0" prefWidth="1169.0">
+      <AnchorPane layoutX="6.0" layoutY="76.0" prefHeight="695.0" prefWidth="1194.0" style="-fx-background-color: #0f6789; -fx-background-radius: 10;">
          <children>
-            <ImageView fitHeight="788.0" fitWidth="1197.0" layoutX="2.0" layoutY="7.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icon/reportImage.jpg" />
-               </image>
-            </ImageView>
-            <TableView fx:id="tableDailyReport" layoutX="29.0" layoutY="48.0" prefHeight="627.0" prefWidth="328.0">
+            <TableView fx:id="tableDailyReport" layoutX="29.0" layoutY="41.0" prefHeight="306.0" prefWidth="328.0">
               <columns>
                 <TableColumn fx:id="colDay" prefWidth="75.0" text="Day" />
                 <TableColumn fx:id="colDesc" prefWidth="109.60000610351562" text="Description" />
@@ -60,20 +59,65 @@
                   <TableColumn fx:id="colTotal" prefWidth="85.60000610351562" text="total" />
               </columns>
             </TableView>
-            <AreaChart fx:id="barChart" layoutX="362.0" layoutY="45.0" prefHeight="627.0" prefWidth="832.0">
+            <AreaChart fx:id="barChart" layoutX="362.0" layoutY="182.0" prefHeight="530.0" prefWidth="832.0">
               <xAxis>
-                <CategoryAxis endMargin="1.0" prefHeight="28.0" prefWidth="766.0" side="BOTTOM" startMargin="1.0" tickLabelGap="1.0" tickLength="5.0">
+                <CategoryAxis endMargin="1.0" prefHeight="28.0" prefWidth="766.0" side="BOTTOM" startMargin="1.0" tickLabelFill="WHITE" tickLabelGap="0.25" tickLength="5.0">
                      <tickLabelFont>
-                        <Font size="16.0" />
+                        <Font size="12.0" />
                      </tickLabelFont></CategoryAxis>
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT">
+                <NumberAxis side="LEFT" tickLabelFill="WHITE">
                      <tickLabelFont>
                         <Font size="16.0" />
                      </tickLabelFont></NumberAxis>
               </yAxis>
             </AreaChart>
+            <AnchorPane layoutX="565.0" layoutY="16.0" prefHeight="124.0" prefWidth="494.0" style="-fx-background-color: #286155; -fx-background-radius: 10;">
+               <children>
+                  <AnchorPane layoutX="115.0" layoutY="67.0" opacity="0.79" prefHeight="45.0" prefWidth="271.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Text fx:id="txtDailyRevenueSearch" fill="#b42626" layoutX="76.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="118.13677978515625">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtDailyRevenue11" fill="#b42626" layoutX="32.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rs:" wrappingWidth="36.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <DatePicker fx:id="datePicker" layoutX="333.0" layoutY="31.0" onAction="#getDate" prefHeight="23.0" prefWidth="50.0" />
+                  <Text fill="WHITE" layoutX="172.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Revenue:" wrappingWidth="150.13677978515625">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtSearchByDate" layoutX="117.0" layoutY="31.0" onAction="#txtSearchBydateOnAction" prefHeight="26.0" prefWidth="241.0" promptText="search by date" />
+               </children>
+            </AnchorPane>
+            <Label alignment="CENTER" layoutX="31.0" layoutY="15.0" prefHeight="26.0" prefWidth="328.0" text="Daily Sold Product Quantity" textAlignment="CENTER" textFill="#f4eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutX="29.0" layoutY="364.0" prefHeight="26.0" prefWidth="328.0" text="Daily waste Quantity" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <TableView fx:id="tblWaste" layoutX="29.0" layoutY="388.0" prefHeight="282.0" prefWidth="328.0">
+              <columns>
+                <TableColumn fx:id="colDayW" prefWidth="75.0" text="Day" />
+                <TableColumn fx:id="colDescriptionW" prefWidth="128.00003051757812" text="Description" />
+                  <TableColumn fx:id="colQtyW" prefWidth="123.19998168945312" text="waste qty" />
+              </columns>
+            </TableView>
+            <Label alignment="CENTER" layoutX="640.0" layoutY="156.0" prefHeight="26.0" prefWidth="328.0" text="Daily Revenue for last 7 days" textAlignment="CENTER" textFill="#f4eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

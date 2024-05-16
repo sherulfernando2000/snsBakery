@@ -5,8 +5,11 @@
 <?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
@@ -75,7 +78,7 @@
                         <String fx:value="white-bg" />
                      </styleClass>
                      <children>
-                        <AnchorPane layoutX="38.0" layoutY="43.0" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+                        <AnchorPane layoutX="17.0" layoutY="43.0" prefHeight="56.0" prefWidth="257.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
                            <styleClass>
                               <String fx:value="nav-form" />
                               <String fx:value="radius" />
@@ -83,7 +86,7 @@
                            <children>
                               <Text fill="WHITE" layoutX="71.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Customers:" wrappingWidth="165.33673095703125">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="56.0" fitWidth="92.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
@@ -91,14 +94,14 @@
                                     <Image url="@../icon/icons8-customers-100.png" />
                                  </image>
                               </ImageView>
-                              <Text fx:id="txtNoOfCustomers" fill="WHITE" layoutX="213.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                              <Text fx:id="txtNoOfCustomers" fill="WHITE" layoutX="195.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="65.33673095703125">
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="416.0" layoutY="43.0" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+                        <AnchorPane layoutX="301.0" layoutY="43.0" prefHeight="56.0" prefWidth="189.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
                            <styleClass>
                               <String fx:value="nav-form" />
                               <String fx:value="radius" />
@@ -111,25 +114,25 @@
                               </ImageView>
                               <Text fill="WHITE" layoutX="48.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Orders:" wrappingWidth="137.33673095703125">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="txtNoOfOrders" fill="WHITE" layoutX="166.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                              <Text fx:id="txtNoOfOrders" fill="WHITE" layoutX="155.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="94.13677978515625">
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="793.0" layoutY="43.0" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+                        <AnchorPane layoutX="572.0" layoutY="43.0" prefHeight="56.0" prefWidth="247.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
                            <styleClass>
                               <String fx:value="nav-form" />
                               <String fx:value="radius" />
                            </styleClass>
                            <children>
-                              <Text fx:id="txtDailyRevenue" fill="WHITE" layoutX="208.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                              <Text fx:id="txtDailyRevenue" fill="WHITE" layoutX="187.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="58.13671875">
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="68.0" fitWidth="45.0" layoutX="2.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -139,20 +142,20 @@
                               </ImageView>
                               <Text fill="WHITE" layoutX="58.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Revenue: RS." wrappingWidth="150.13677978515625">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="43.0" layoutY="116.0" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+                        <AnchorPane layoutX="16.0" layoutY="116.0" prefHeight="56.0" prefWidth="265.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
                            <styleClass>
                               <String fx:value="nav-form" />
                               <String fx:value="radius" />
                            </styleClass>
                            <children>
-                              <Text fx:id="txtMonthlyRevenue" fill="WHITE" layoutX="245.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                              <Text fx:id="txtMonthlyRevenue" fill="WHITE" layoutX="194.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="66.13677978515625">
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="68.0" fitWidth="45.0" layoutX="10.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -160,27 +163,27 @@
                                     <Image url="@../icon/icons8-money-100.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" layoutX="72.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Revenue: Rs." wrappingWidth="182.13677978515625">
+                              <Text fill="WHITE" layoutX="55.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Month Revenue: Rs." wrappingWidth="146.13677978515625">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="421.0" layoutY="116.0" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+                        <AnchorPane layoutX="300.0" layoutY="116.0" prefHeight="56.0" prefWidth="244.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
                            <styleClass>
                               <String fx:value="nav-form" />
                               <String fx:value="radius" />
                            </styleClass>
                            <children>
-                              <Text fx:id="txtNoOfProducts" fill="WHITE" layoutX="195.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                              <Text fx:id="txtNoOfProducts" fill="WHITE" layoutX="186.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="66.13677978515625">
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                               <Text fill="WHITE" layoutX="59.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Products:" wrappingWidth="160.5367431640625">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
@@ -190,7 +193,7 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="794.0" layoutY="116.0" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+                        <AnchorPane layoutX="573.0" layoutY="116.0" prefHeight="56.0" prefWidth="177.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
                            <styleClass>
                               <String fx:value="nav-form" />
                               <String fx:value="radius" />
@@ -198,7 +201,7 @@
                            <children>
                               <Text fill="WHITE" layoutX="57.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of Employees:" wrappingWidth="178.93670654296875">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="45.0" fitWidth="45.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -206,9 +209,9 @@
                                     <Image url="@../icon/icons8-customers-100.png" />
                                  </image>
                               </ImageView>
-                              <Text fx:id="txtNoOfEmployee" fill="WHITE" layoutX="207.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="74.936767578125">
+                              <Text fx:id="txtNoOfEmployee" fill="WHITE" layoutX="182.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="67.73681640625">
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                            </children>
@@ -228,14 +231,7 @@
                                   <NumberAxis side="LEFT" tickLabelFill="#08482b" />
                                 </yAxis>
                               </AreaChart>
-                              <AreaChart fx:id="barChart1" layoutX="544.0" layoutY="68.0" prefHeight="325.0" prefWidth="526.0" style="-fx-background-color: white; -fx-background-radius: 10;" title="orders for last 7 days">
-                                 <xAxis>
-                                    <CategoryAxis prefHeight="22.0" prefWidth="469.0" side="BOTTOM" tickLabelFill="#08482b" />
-                                 </xAxis>
-                                 <yAxis>
-                                    <NumberAxis side="LEFT" tickLabelFill="#08482b" />
-                                 </yAxis>
-                              </AreaChart>
+                              <PieChart fx:id="pieChart" layoutX="543.0" layoutY="65.0" prefHeight="330.0" prefWidth="528.0" style="-fx-background-color: white; -fx-background-radius: 10;" title="Most sell products" />
                            </children>
                         </AnchorPane>
                         <Label layoutX="326.0" layoutY="652.0" prefHeight="59.0" prefWidth="534.0" style="-fx-background-color: white;" styleClass="radius" stylesheets="@../css/dashboard.css" text="WELCOME TO S &amp; S BAKERY SYSTEM" textFill="#08482b">
@@ -243,6 +239,46 @@
                               <Font name="System Bold" size="29.0" />
                            </font>
                         </Label>
+                        <AnchorPane layoutX="839.0" layoutY="40.0" prefHeight="134.0" prefWidth="284.0" style="-fx-background-color: #0f6789; -fx-background-radius: 10;">
+                           <children>
+                              <AnchorPane layoutX="162.0" layoutY="66.0" opacity="0.79" prefHeight="29.0" prefWidth="103.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                                 <children>
+                                    <Text fx:id="txtProductSoldSearch" fill="#b42626" layoutX="5.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="94.936767578125">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="149.0" layoutY="3.0" opacity="0.79" prefHeight="23.0" prefWidth="128.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                                 <children>
+                                    <Text fx:id="txtDailyRevenueSearch" fill="#b42626" layoutX="10.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="96.5367431640625">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                              <DatePicker fx:id="datePicker" layoutX="231.0" layoutY="31.0" onAction="#getDate" prefHeight="23.0" prefWidth="50.0" />
+                              <Text fill="WHITE" layoutX="14.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Revenue:" wrappingWidth="150.13677978515625">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtSearchByDate" layoutX="15.0" layoutY="31.0" onAction="#txtSearchBydateOnAction" prefHeight="26.0" prefWidth="241.0" promptText="search by date" />
+                              <Text fx:id="txtDailyRevenue11" fill="WHITE" layoutX="124.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rs:" wrappingWidth="36.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="12.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No of products sold:" wrappingWidth="150.13677978515625">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtSearchByProduct" layoutX="15.0" layoutY="100.0" onAction="#txtSearchByProductOnAction" prefHeight="26.0" prefWidth="267.0" promptText="search by name" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </children>

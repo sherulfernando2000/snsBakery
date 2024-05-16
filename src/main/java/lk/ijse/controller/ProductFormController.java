@@ -193,7 +193,7 @@ public class ProductFormController {
         String name = txtProductIName.getText();
         String category = String.valueOf(cmbProductCategory.getValue());
         int qty = Integer.parseInt(txtProductQty.getText());
-        int price = Integer.parseInt(txtProductIPrice.getText());
+        double price = Double.parseDouble(txtProductIPrice.getText());
 
         Product product = new Product(id,name,category,qty,price);
 

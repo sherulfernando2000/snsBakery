@@ -3,6 +3,7 @@ package lk.ijse.repository;
 import lk.ijse.db.DbConnection;
 import lk.ijse.model.Customer;
 import lk.ijse.model.Tm.DailyReportTm;
+import lk.ijse.model.Tm.DailyWasteReportTm;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -72,5 +73,32 @@ public class DailyReportRepo {
 
         }
         return total;
+    }
+
+    public static List<DailyWasteReportTm> getAllWaste() throws SQLException {
+        String sql = "SELECT w.date, p.pName, w.wasteQty, w.disposeMethod\n" +
+                "FROM wastemanage w\n" +
+                "JOIN product p ON w.productId = p.productId\n" +
+                "ORDER BY w.date ASC;\n";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<DailyWasteReportTm> dailyRepoList = new ArrayList<>();
+
+        while (resultSet.next()){
+            Date day = Date.valueOf(resultSet.getString(1));
+            String desc = resultSet.getString(2);
+            int qty = Integer.parseInt(resultSet.getString(3));
+
+
+            DailyWasteReportTm dailyReportTm = new DailyWasteReportTm(day,desc,qty);
+            dailyRepoList.add(dailyReportTm);
+        }
+        return dailyRepoList;
+
+
+
+
     }
 }

@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -19,7 +19,19 @@
          <center>
             <AnchorPane prefHeight="800.0" prefWidth="1192.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutX="-2.0" prefHeight="62.0" prefWidth="1217.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css" />
+                  <AnchorPane layoutX="-2.0" prefHeight="68.0" prefWidth="1204.0" style="-fx-background-color: #286155;" stylesheets="@../css/dashboard.css">
+                     <children>
+                        <JFXButton fx:id="btnEmail" alignment="TOP_LEFT" buttonType="RAISED" layoutX="732.0" layoutY="4.0" onAction="#btnEmailOnAction" prefHeight="54.0" prefWidth="206.0" style="-fx-border-color: white; -fx-border-radius: 5;" text="OFFERS FORM" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="899.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/icons8-click-30.png" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
                   <AnchorPane layoutX="24.0" layoutY="69.0" prefHeight="712.0" prefWidth="1139.0" stylesheets="@../css/dashboard.css" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="69.0">
                      <styleClass>
                         <String fx:value="radius" />
@@ -139,16 +151,23 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <Label alignment="CENTER" layoutX="473.0" layoutY="14.0" prefHeight="38.0" prefWidth="306.0" text="CUSTOMER MANAGE" textFill="WHITE" AnchorPane.bottomAnchor="747.6" AnchorPane.leftAnchor="472.80000000000007" AnchorPane.rightAnchor="423.20000000000016" AnchorPane.topAnchor="13.600000000000001">
-                     <font>
-                        <Font name="System Bold" size="26.0" />
-                     </font>
-                  </Label>
                   <ImageView fitHeight="51.0" fitWidth="81.0" layoutX="2.0" layoutY="5.0" opacity="0.87" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icon/sns-removebg-preview.png" />
                      </image>
                   </ImageView>
+                  <JFXButton fx:id="btnCustomer" alignment="TOP_LEFT" buttonType="RAISED" layoutX="138.0" layoutY="5.0" prefHeight="54.0" prefWidth="254.0" style="-fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #0f6789;" text="CUSTOMER FORM" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="353.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-click-30.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="1092.2000732421875" endY="7.62939453125E-6" layoutX="103.0" layoutY="65.0" startX="-100.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="5.0" />
+                  <Line endX="480.4000244140625" endY="-20.00000762939453" layoutX="92.0" layoutY="85.0" startX="-87.79998779296875" startY="-20.000001907348633" stroke="#0f6789" strokeLineCap="ROUND" strokeWidth="5.0" />
                </children>
             </AnchorPane>
          </center>
