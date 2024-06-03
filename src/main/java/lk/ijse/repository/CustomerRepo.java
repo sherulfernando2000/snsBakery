@@ -38,6 +38,8 @@ public class CustomerRepo {
 
         return pstm.executeUpdate()>0;
 
+
+
     }
 
 
@@ -106,21 +108,5 @@ public class CustomerRepo {
 
     }
 
-    /*public static List<Customer> getNameEmail() throws SQLException {
-        String sql = "SELECT * FROM customer";;
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
 
-        List<Customer> cusList = new ArrayList<>();
-
-        while (resultSet.next()) {
-            String name = resultSet.getString(2);
-            String address = resultSet.getString(4);
-
-            Customer customer = new Customer(id, name, tel, address);
-            cusList.add(customer);
-        }
-        return cusList;
-    }*/
 }

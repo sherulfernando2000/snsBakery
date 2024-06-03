@@ -82,7 +82,7 @@ public class DashboardRepo {
     }
 
     public static List<DailyRevenueTm> getDateCount() {
-        List<DailyRevenueTm> dailyRevenueTmList = new ArrayList<>();;
+        List<DailyRevenueTm> dailyRevenueTmList = new ArrayList<>();
         PreparedStatement stm = null;
         try {
             stm = DbConnection.getInstance().getConnection().prepareStatement("SELECT date, SUM(totalAmount) AS totalAmountSum\n" +

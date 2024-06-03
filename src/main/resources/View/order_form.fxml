@@ -199,7 +199,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lblGrossTotal" layoutX="141.0" layoutY="676.0" prefHeight="21.0" prefWidth="83.0" style="-fx-background-color: white;">
+            <Label fx:id="lblGrossTotal" layoutX="141.0" layoutY="670.0" prefHeight="21.0" prefWidth="83.0" style="-fx-background-color: white;">
                <font>
                   <Font size="18.0" />
                </font></Label>

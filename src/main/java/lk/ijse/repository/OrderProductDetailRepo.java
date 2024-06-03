@@ -32,6 +32,6 @@ public class OrderProductDetailRepo {
         pstm.setInt(4, od.getQty());
         pstm.setDouble(5, od.getTotal());
 
-        return pstm.executeUpdate() > 0;    //false ->  |
+        return pstm.executeUpdate() > 0;
     }
 }

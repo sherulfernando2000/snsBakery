@@ -265,60 +265,15 @@ public class DashBoardFormController {
     }
 
 
-  /*  public void lineChart(){
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("Bakery");
 
-    PreparedStatement stm = null;
-        try {
-        stm = DbConnection.getInstance().getConnection().prepareStatement("SELECT date, SUM(totalAmount) AS totalAmountSum\n" +
-                "FROM payment\n" +
-                "WHERE date >= CURDATE() - INTERVAL 6 DAY\n" +
-                "GROUP BY date\n" +
-                "ORDER BY date ASC;");
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-    ResultSet rst = null;
-        try {
-        rst = stm.executeQuery();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-        while (true) {
-        try {
-            if (!rst.next()) break;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        String date = null;
-        try {
-            date = rst.getString(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        int count = 0;
-        try {
-            count = rst.getInt(2);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        series1.getData().add(new XYChart.Data<>(date, count));
-    }
-        barChart.getData().addAll(series1);
-    }*/
 
     public void lineChart1(){
-        XYChart.Series series1 = new XYChart.Series();
+        XYChart.Series series1 = new XYChart.Series();  // represent a series of data points on the chart.
         series1.setName("Bakery");
         List<DailyRevenueTm> dailyRevenueTmList = DashboardRepo.getDateCount();
 
         for (DailyRevenueTm dailyRevenue: dailyRevenueTmList) {
-            series1.getData().add(new XYChart.Data<>(dailyRevenue.getDate(),dailyRevenue.getCount()));
+            series1.getData().add(new XYChart.Data<>(dailyRevenue.getDate(),dailyRevenue.getCount()));  //xy chart class eke thiyana static innerclass ekak
         }
         barChart.getData().addAll(series1);
         }
@@ -342,7 +297,7 @@ public class DashBoardFormController {
             ObservableList<PieChart.Data> pieChartData =
                     FXCollections.observableArrayList(
                             new PieChart.Data(sellItem.getName(), sellItem.getQty())
-                    );
+                    );  //PieChart has a static nested class Data
 
             pieChart.getData().addAll(pieChartData);
         }
@@ -436,6 +391,53 @@ public class DashBoardFormController {
             series1.getData().add(new XYChart.Data<>(date, count));
         }
         barChart1.getData().addAll(series1);
+    }*/
+
+    /*  public void lineChart(){
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Bakery");
+
+    PreparedStatement stm = null;
+        try {
+        stm = DbConnection.getInstance().getConnection().prepareStatement("SELECT date, SUM(totalAmount) AS totalAmountSum\n" +
+                "FROM payment\n" +
+                "WHERE date >= CURDATE() - INTERVAL 6 DAY\n" +
+                "GROUP BY date\n" +
+                "ORDER BY date ASC;");
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    ResultSet rst = null;
+        try {
+        rst = stm.executeQuery();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+        while (true) {
+        try {
+            if (!rst.next()) break;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        String date = null;
+        try {
+            date = rst.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        int count = 0;
+        try {
+            count = rst.getInt(2);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        series1.getData().add(new XYChart.Data<>(date, count));
+    }
+        barChart.getData().addAll(series1);
     }*/
 
 

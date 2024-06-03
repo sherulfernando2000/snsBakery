@@ -131,6 +131,13 @@ public class OrderFormController {
 
     }
 
+    public void initializeOrder() {
+        setDateTime();
+        getCurrentOrderId();
+        getProductDescription();
+        setCellValueFactory();
+    }
+
     void initializePayment() {
         getNextPaymentId();
         lblGrossAmount.setText(String.valueOf(grossTotal));
@@ -196,12 +203,7 @@ public class OrderFormController {
         return "P-1";
     }
 
-    public void initializeOrder() {
-        setDateTime();
-        getCurrentOrderId();
-        getProductDescription();
-        setCellValueFactory();
-    }
+
 
 
 
@@ -579,14 +581,7 @@ public class OrderFormController {
                 boolean isPlaced =  PlaceOrderRepo.placeOrder(po);
                 if(isPlaced) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
-                    //new code set
-                /*String recipientEmail = "sherul.dhanushka@gmail.com"; // Replace with recipient email
-                String subject = "Order Confirmation";
-                String body = "Your order has been successfully placed. Thank you!";
-                EmailUtil.sendEmail(recipientEmail, subject, body);*/
 
-                    // Show confirmation message to the user
-                    //new Alert(Alert.AlertType.CONFIRMATION, "Order Placed! Email sent.").show();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
                 }
@@ -603,19 +598,6 @@ public class OrderFormController {
 
         }
 
-
-
-       /* PlaceOrder po = new PlaceOrder(order, odList);
-        try {
-            boolean isPlaced = PlaceOrderRepo.placeOrder(po);
-            if(isPlaced) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }*/
     }
 
 

@@ -131,20 +131,6 @@ public class CustomerFormController {
 
         Customer customer = new Customer(id,name,tel,address);
 
-        /*if (isValied() == 0) {
-            try {
-                boolean isSaved = CustomerRepo.save(customer);
-                if (isSaved ) {
-                    new Alert(Alert.AlertType.CONFIRMATION,"customer saved").show();
-                    clearFields();
-                    loadAllCustomers();
-                }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }else {
-            new Alert(Alert.AlertType.ERROR)
-        }*/
         switch (isValied()){
             case 0:
                 try {
@@ -280,7 +266,7 @@ public class CustomerFormController {
     }
 
     public void emailSent() throws MessagingException {
-        String recipientEmail = addressForEmail; // Replace with recipient email
+        String recipientEmail = addressForEmail; // recipient email
                 String subject = "Welcome to S & S Bakery!";
                 String body = "Dear "+nameForEmail+",\n"+"Welcome to S & S Bakery! Thank you for registering with us. Get ready for exclusive offers and seasonal discounts delivered straight to your inbox.\n" +
                         "\n" +

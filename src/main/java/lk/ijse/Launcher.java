@@ -18,7 +18,5 @@ public class Launcher extends Application {
         Scene scene = new Scene(rootNode);
         stage.setScene(scene);
         stage.show();
-
-
     }
 }

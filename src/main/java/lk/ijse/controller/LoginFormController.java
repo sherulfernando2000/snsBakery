@@ -68,18 +68,7 @@ public class LoginFormController {
 
     private void navigateToDashBoard(String userName) throws IOException {
         try {
-           /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashboard_form.fxml"));
-            Parent dashboardRoot = loader.load();
-            DashboardFormController controller = loader.getController();
-            controller.setUsername(username); // Pass the username to the DashboardFormController
-            Scene scene = new Scene(dashboardRoot);
-            Stage stage = (Stage) rootNode.getScene().getWindow();
-            stage.setScene(scene);
-            stage.centerOnScreen();
-            stage.setTitle("Dashboard Form");*/
 
-            /*AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard_form.fxml"));
-            Scene scene = new Scene(rootNode);*/
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashboard_form.fxml"));
             Parent dashboardRoot = loader.load();
             DashBoardFormController controller = loader.getController();
